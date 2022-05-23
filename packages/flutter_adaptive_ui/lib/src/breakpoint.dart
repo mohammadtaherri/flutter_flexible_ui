@@ -60,13 +60,13 @@ class Breakpoint {
     return _calcBreakpoint(orientation, width);
   }
 
-  static Breakpoint _calcBreakpoint(Orientation orientation, double _width) {
+  static Breakpoint _calcBreakpoint(Orientation orientation, double width) {
     if (orientation == Orientation.landscape) {
       // ignore: parameter_assignments
-      _width += 120;
+      width += 120;
     }
 
-    if (_width >= 1920) {
+    if (width >= 1920) {
       return const Breakpoint(
         columns: 12,
         gutters: 24,
@@ -75,7 +75,7 @@ class Breakpoint {
         window: WindowType.xlarge,
       );
     }
-    if (_width >= 1600) {
+    if (width >= 1600) {
       return const Breakpoint(
         columns: 12,
         gutters: 24,
@@ -84,7 +84,7 @@ class Breakpoint {
         window: WindowType.large,
       );
     }
-    if (_width >= 1440) {
+    if (width >= 1440) {
       return const Breakpoint(
         columns: 12,
         gutters: 24,
@@ -93,7 +93,7 @@ class Breakpoint {
         window: WindowType.large,
       );
     }
-    if (_width >= 1280) {
+    if (width >= 1280) {
       return const Breakpoint(
         columns: 12,
         gutters: 24,
@@ -102,7 +102,7 @@ class Breakpoint {
         window: WindowType.medium,
       );
     }
-    if (_width >= 1024) {
+    if (width >= 1024) {
       return const Breakpoint(
         columns: 12,
         gutters: 24,
@@ -111,7 +111,7 @@ class Breakpoint {
         window: WindowType.medium,
       );
     }
-    if (_width >= 960) {
+    if (width >= 960) {
       return const Breakpoint(
         columns: 12,
         gutters: 24,
@@ -120,7 +120,7 @@ class Breakpoint {
         window: WindowType.small,
       );
     }
-    if (_width >= 840) {
+    if (width >= 840) {
       return const Breakpoint(
         columns: 12,
         gutters: 24,
@@ -129,7 +129,7 @@ class Breakpoint {
         window: WindowType.small,
       );
     }
-    if (_width >= 720) {
+    if (width >= 720) {
       return const Breakpoint(
         columns: 8,
         gutters: 24,
@@ -138,7 +138,7 @@ class Breakpoint {
         window: WindowType.small,
       );
     }
-    if (_width >= 600) {
+    if (width >= 600) {
       return const Breakpoint(
         columns: 8,
         gutters: 16,
@@ -147,7 +147,7 @@ class Breakpoint {
         window: WindowType.small,
       );
     }
-    if (_width >= 480) {
+    if (width >= 480) {
       return const Breakpoint(
         columns: 4,
         gutters: 16,
@@ -156,7 +156,7 @@ class Breakpoint {
         window: WindowType.xsmall,
       );
     }
-    if (_width >= 400) {
+    if (width >= 400) {
       return const Breakpoint(
         columns: 4,
         gutters: 16,
@@ -165,7 +165,7 @@ class Breakpoint {
         window: WindowType.xsmall,
       );
     }
-    if (_width >= 360) {
+    if (width >= 360) {
       return const Breakpoint(
         columns: 4,
         gutters: 16,
@@ -185,6 +185,6 @@ class Breakpoint {
 
   @override
   String toString() {
-    return '$window';
+    return 'Breakpoint ($window)';
   }
 }
