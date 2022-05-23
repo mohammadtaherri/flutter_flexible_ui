@@ -2,7 +2,7 @@ part of flutter_adaptive_ui;
 
 class Breakpoint {
   /// xsmall, small, medium, large, xlarge
-  final WindowSize window;
+  final WindowType window;
 
   /// smallHandset, mediumHandset, largeHandset, smallTablet, largeTablet, deskto
   final DeviceType device;
@@ -72,7 +72,7 @@ class Breakpoint {
         gutters: 24,
         margins: 24,
         device: DeviceType.desktop,
-        window: WindowSize.xlarge,
+        window: WindowType.xlarge,
       );
     }
     if (_width >= 1600) {
@@ -81,7 +81,7 @@ class Breakpoint {
         gutters: 24,
         margins: 24,
         device: DeviceType.desktop,
-        window: WindowSize.large,
+        window: WindowType.large,
       );
     }
     if (_width >= 1440) {
@@ -90,7 +90,7 @@ class Breakpoint {
         gutters: 24,
         margins: 24,
         device: DeviceType.desktop,
-        window: WindowSize.large,
+        window: WindowType.large,
       );
     }
     if (_width >= 1280) {
@@ -99,7 +99,7 @@ class Breakpoint {
         gutters: 24,
         margins: 24,
         device: DeviceType.desktop,
-        window: WindowSize.medium,
+        window: WindowType.medium,
       );
     }
     if (_width >= 1024) {
@@ -108,7 +108,7 @@ class Breakpoint {
         gutters: 24,
         margins: 24,
         device: DeviceType.desktop,
-        window: WindowSize.medium,
+        window: WindowType.medium,
       );
     }
     if (_width >= 960) {
@@ -117,7 +117,7 @@ class Breakpoint {
         gutters: 24,
         margins: 24,
         device: DeviceType.largeTablet,
-        window: WindowSize.small,
+        window: WindowType.small,
       );
     }
     if (_width >= 840) {
@@ -126,7 +126,7 @@ class Breakpoint {
         gutters: 24,
         margins: 24,
         device: DeviceType.largeTablet,
-        window: WindowSize.small,
+        window: WindowType.small,
       );
     }
     if (_width >= 720) {
@@ -135,7 +135,7 @@ class Breakpoint {
         gutters: 24,
         margins: 24,
         device: DeviceType.largeTablet,
-        window: WindowSize.small,
+        window: WindowType.small,
       );
     }
     if (_width >= 600) {
@@ -144,7 +144,7 @@ class Breakpoint {
         gutters: 16,
         margins: 16,
         device: DeviceType.smallTablet,
-        window: WindowSize.small,
+        window: WindowType.small,
       );
     }
     if (_width >= 480) {
@@ -153,7 +153,7 @@ class Breakpoint {
         gutters: 16,
         margins: 16,
         device: DeviceType.largeHandset,
-        window: WindowSize.xsmall,
+        window: WindowType.xsmall,
       );
     }
     if (_width >= 400) {
@@ -162,7 +162,7 @@ class Breakpoint {
         gutters: 16,
         margins: 16,
         device: DeviceType.largeHandset,
-        window: WindowSize.xsmall,
+        window: WindowType.xsmall,
       );
     }
     if (_width >= 360) {
@@ -171,7 +171,7 @@ class Breakpoint {
         gutters: 16,
         margins: 16,
         device: DeviceType.mediumHandset,
-        window: WindowSize.xsmall,
+        window: WindowType.xsmall,
       );
     }
     return const Breakpoint(
@@ -179,7 +179,7 @@ class Breakpoint {
       gutters: 16,
       margins: 16,
       device: DeviceType.smallHandset,
-      window: WindowSize.xsmall,
+      window: WindowType.xsmall,
     );
   }
 
