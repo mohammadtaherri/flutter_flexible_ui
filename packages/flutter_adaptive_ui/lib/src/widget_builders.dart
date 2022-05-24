@@ -10,13 +10,14 @@ abstract class AdaptiveLayoutDelegate {
   AdaptiveWidgetBuilder? getBuilder(Device device);
 }
 
-class AdaptiveLayoutDelegateForHandset implements AdaptiveLayoutDelegate {
-  const AdaptiveLayoutDelegateForHandset(
+class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateWithWindowType(
     this.smallHandset,
     this.mediumHandset,
     this.largeHandset,
     this.smallTablet,
     this.largeTablet,
+    this.desktop,
   );
 
   final AdaptiveWidgetBuilder? smallHandset;
@@ -24,6 +25,7 @@ class AdaptiveLayoutDelegateForHandset implements AdaptiveLayoutDelegate {
   final AdaptiveWidgetBuilder? largeHandset;
   final AdaptiveWidgetBuilder? smallTablet;
   final AdaptiveWidgetBuilder? largeTablet;
+  final AdaptiveWidgetBuilder? desktop;
 
   @override
   @protected
@@ -40,40 +42,40 @@ class AdaptiveLayoutDelegateForHandset implements AdaptiveLayoutDelegate {
       case WindowType.largeTablet:
         return largeTablet;
       case WindowType.desktop:
-        return null;
+        return desktop;
     }
   }
 }
 
-class AdaptiveLayoutDelegateForDesktop implements AdaptiveLayoutDelegate {
-  const AdaptiveLayoutDelegateForDesktop(
-    this.xSmallWindow,
-    this.smallWindow,
-    this.mediumWindow,
-    this.largeWindow,
-    this.xLargeWindow,
+class AdaptiveLayoutDelegateWithWindowSize implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateWithWindowSize(
+    this.xSmall,
+    this.small,
+    this.medium,
+    this.large,
+    this.xLarge,
   );
 
-  final AdaptiveWidgetBuilder? xSmallWindow;
-  final AdaptiveWidgetBuilder? smallWindow;
-  final AdaptiveWidgetBuilder? mediumWindow;
-  final AdaptiveWidgetBuilder? largeWindow;
-  final AdaptiveWidgetBuilder? xLargeWindow;
+  final AdaptiveWidgetBuilder? xSmall;
+  final AdaptiveWidgetBuilder? small;
+  final AdaptiveWidgetBuilder? medium;
+  final AdaptiveWidgetBuilder? large;
+  final AdaptiveWidgetBuilder? xLarge;
 
   @override
   @protected
   AdaptiveWidgetBuilder? getBuilder(Device device) {
     switch (device.windowSize) {
       case WindowSize.xsmall:
-        return xSmallWindow;
+        return xSmall;
       case WindowSize.small:
-        return smallWindow;
+        return small;
       case WindowSize.medium:
-        return mediumWindow;
+        return medium;
       case WindowSize.large:
-        return largeWindow;
+        return large;
       case WindowSize.xlarge:
-        return xLargeWindow;
+        return xLarge;
     }
   }
 }
@@ -81,7 +83,7 @@ class AdaptiveLayoutDelegateForDesktop implements AdaptiveLayoutDelegate {
 class AdaptiveBuilder extends StatelessWidget {
   const AdaptiveBuilder({
     super.key,
-    required this.builder,
+    required this.defaultBuilder,
     //android
     this.android,
     //ios
@@ -94,32 +96,27 @@ class AdaptiveBuilder extends StatelessWidget {
     this.linux,
     //web
     this.web,
-    //default
-    this.targetSize,
   });
 
-  final AdaptiveWidgetBuilder builder;
-
   ///android
-  final AdaptiveLayoutDelegateForHandset? android;
+  final AdaptiveLayoutDelegate? android;
 
   ///ios
-  final AdaptiveLayoutDelegateForHandset? ios;
+  final AdaptiveLayoutDelegate? ios;
 
   ///windows
-  final AdaptiveLayoutDelegateForDesktop? windows;
+  final AdaptiveLayoutDelegate? windows;
 
   ///linux
-  final AdaptiveLayoutDelegateForDesktop? linux;
+  final AdaptiveLayoutDelegate? linux;
 
   ///macos
-  final AdaptiveLayoutDelegateForDesktop? macos;
+  final AdaptiveLayoutDelegate? macos;
 
   ///web
-  final AdaptiveLayoutDelegateForDesktop? web;
+  final AdaptiveLayoutDelegate? web;
 
-  ///window size
-  final AdaptiveLayoutDelegateForDesktop? targetSize;
+  final AdaptiveLayoutDelegate defaultBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -150,9 +147,9 @@ class AdaptiveBuilder extends StatelessWidget {
       }
     }
 
-    b = b ?? targetSize?.getBuilder(device);
-
-    return b?.call(context, device) ?? builder.call(context, device);
+    return b?.call(context, device) ??
+        defaultBuilder.getBuilder(device)?.call(context, device) ??
+        ErrorWidget('exception');
   }
 }
 
