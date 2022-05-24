@@ -80,6 +80,32 @@ class AdaptiveLayoutDelegateWithWindowSize implements AdaptiveLayoutDelegate {
   }
 }
 
+class AdaptiveLayoutDelegateWithDesignLanguage
+    implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateWithDesignLanguage(
+    this.material,
+    this.cupertino,
+    this.fluent,
+  );
+
+  final AdaptiveWidgetBuilder? material;
+  final AdaptiveWidgetBuilder? cupertino;
+  final AdaptiveWidgetBuilder? fluent;
+
+  @override
+  @protected
+  AdaptiveWidgetBuilder? getBuilder(Device device) {
+    switch (device.designLanguage) {
+      case DesignLanguage.material:
+        return material;
+      case DesignLanguage.cupertino:
+        return cupertino;
+      case DesignLanguage.fluent:
+        return fluent;
+    }
+  }
+}
+
 class AdaptiveBuilder extends StatelessWidget {
   const AdaptiveBuilder({
     super.key,
