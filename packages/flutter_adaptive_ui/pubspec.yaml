@@ -1,6 +1,7 @@
 name: flutter_adaptive_ui
 description: A new Flutter package project.
 version: 0.4.0
+repository: 
 homepage:
 
 environment:
