@@ -44,14 +44,12 @@ class DeviceConfig {
         windowSize: WindowSize.xlarge,
       );
     }
-
     if (width >= 1440) {
       return DeviceConfig(
         windowType: WindowType.mediumDesktop,
         windowSize: WindowSize.large,
       );
     }
-
     if (width >= 1024) {
       return DeviceConfig(
         windowType: WindowType.smallDesktop,
@@ -69,12 +67,6 @@ class DeviceConfig {
       return DeviceConfig(
         windowType: WindowType.smallTablet,
         windowSize: WindowSize.small,
-      );
-    }
-    if (width >= 480) {
-      return DeviceConfig(
-        windowType: WindowType.largeHandset,
-        windowSize: WindowSize.xsmall,
       );
     }
     if (width >= 400) {
