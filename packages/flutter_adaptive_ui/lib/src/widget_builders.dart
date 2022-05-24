@@ -1,13 +1,13 @@
 part of flutter_adaptive_ui;
 
 typedef AdaptiveWidgetBuilder = Widget Function(
-    BuildContext context, Device device);
+    BuildContext context, DeviceConfig device);
 
 abstract class AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegate._();
 
   @protected
-  AdaptiveWidgetBuilder? getBuilder(Device device);
+  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device);
 }
 
 class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
@@ -29,7 +29,7 @@ class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
 
   @override
   @protected
-  AdaptiveWidgetBuilder? getBuilder(Device device) {
+  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
     switch (device.windowType) {
       case WindowType.smallHandset:
         return smallHandset;
@@ -64,7 +64,7 @@ class AdaptiveLayoutDelegateWithWindowSize implements AdaptiveLayoutDelegate {
 
   @override
   @protected
-  AdaptiveWidgetBuilder? getBuilder(Device device) {
+  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
     switch (device.windowSize) {
       case WindowSize.xsmall:
         return xSmall;
@@ -94,7 +94,7 @@ class AdaptiveLayoutDelegateWithDesignLanguage
 
   @override
   @protected
-  AdaptiveWidgetBuilder? getBuilder(Device device) {
+  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
     switch (device.designLanguage) {
       case DesignLanguage.material:
         return material;
@@ -149,7 +149,7 @@ class AdaptiveBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Device device = Device.fromMediaQuery(context);
+    DeviceConfig device = DeviceConfig.fromMediaQuery(context);
     AdaptiveWidgetBuilder? b;
 
     if (device.isWeb) {
@@ -204,7 +204,7 @@ class PlatformBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Device device = Device.fromMediaQuery(context);
+    DeviceConfig device = DeviceConfig.fromMediaQuery(context);
 
     Widget? child;
 
@@ -256,7 +256,7 @@ class WindowBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Device device = Device.fromMediaQuery(context);
+    DeviceConfig device = DeviceConfig.fromMediaQuery(context);
 
     Widget? child;
 

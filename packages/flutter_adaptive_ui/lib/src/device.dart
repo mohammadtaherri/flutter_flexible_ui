@@ -1,7 +1,7 @@
 part of flutter_adaptive_ui;
 
-class Device {
-  Device({
+class DeviceConfig {
+  DeviceConfig({
     required this.windowSize,
     required this.windowType,
   }) {
@@ -33,84 +33,84 @@ class Device {
   late final TargetPlatform targetPlatform;
   late final bool isWeb;
 
-  factory Device.fromMediaQuery(BuildContext context) {
+  factory DeviceConfig.fromMediaQuery(BuildContext context) {
     return _calc(MediaQuery.of(context).size.width);
   }
 
-  static Device _calc(double width) {
+  static DeviceConfig _calc(double width) {
     if (width >= 1920) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.desktop,
         windowSize: WindowSize.xlarge,
       );
     }
     if (width >= 1600) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.desktop,
         windowSize: WindowSize.large,
       );
     }
     if (width >= 1440) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.desktop,
         windowSize: WindowSize.large,
       );
     }
     if (width >= 1280) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.desktop,
         windowSize: WindowSize.medium,
       );
     }
     if (width >= 1024) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.desktop,
         windowSize: WindowSize.medium,
       );
     }
     if (width >= 960) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.largeTablet,
         windowSize: WindowSize.small,
       );
     }
     if (width >= 840) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.largeTablet,
         windowSize: WindowSize.small,
       );
     }
     if (width >= 720) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.largeTablet,
         windowSize: WindowSize.small,
       );
     }
     if (width >= 600) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.smallTablet,
         windowSize: WindowSize.small,
       );
     }
     if (width >= 480) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.largeHandset,
         windowSize: WindowSize.xsmall,
       );
     }
     if (width >= 400) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.largeHandset,
         windowSize: WindowSize.xsmall,
       );
     }
     if (width >= 360) {
-      return Device(
+      return DeviceConfig(
         windowType: WindowType.mediumHandset,
         windowSize: WindowSize.xsmall,
       );
     }
-    return Device(
+    return DeviceConfig(
       windowType: WindowType.smallHandset,
       windowSize: WindowSize.xsmall,
     );
