@@ -1,6 +1,6 @@
 name: flutter_adaptive_ui
 description: A library that helps implement adaptive UI (base on OS , window size , ...) .
-version: 0.1.1+1
+version: 0.1.1+2
 repository: https://github.com/mohammadtaherri/flutter_flexible_ui/tree/main/packages/flutter_adaptive_ui
 homepage:
 
