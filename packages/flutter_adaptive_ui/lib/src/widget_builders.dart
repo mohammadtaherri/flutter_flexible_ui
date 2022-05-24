@@ -6,79 +6,156 @@ typedef AdaptiveWidgetBuilder = Widget Function(
 typedef BreakpointWidgetBuilder = Widget Function(
     BuildContext context, Breakpoint breakpoint);
 
+abstract class AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegate._();
+
+  @protected
+  AdaptiveWidgetBuilder? getBuilder(Device device);
+}
+
+class AdaptiveLayoutDelegateForHandset implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateForHandset(
+    this.smallHandset,
+    this.mediumHandset,
+    this.largeHandset,
+    this.smallTablet,
+    this.largeTablet,
+  );
+
+  final AdaptiveWidgetBuilder? smallHandset;
+  final AdaptiveWidgetBuilder? mediumHandset;
+  final AdaptiveWidgetBuilder? largeHandset;
+  final AdaptiveWidgetBuilder? smallTablet;
+  final AdaptiveWidgetBuilder? largeTablet;
+
+  @override
+  @protected
+  AdaptiveWidgetBuilder? getBuilder(Device device) {
+    switch (device.windowType) {
+      case WindowType.smallHandset:
+        return smallHandset;
+      case WindowType.mediumHandset:
+        return mediumHandset;
+      case WindowType.largeHandset:
+        return largeHandset;
+      case WindowType.smallTablet:
+        return smallTablet;
+      case WindowType.largeTablet:
+        return largeTablet;
+      case WindowType.desktop:
+        return null;
+    }
+  }
+}
+
+class AdaptiveLayoutDelegateForDesktop implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateForDesktop(
+    this.xSmallWindow,
+    this.smallWindow,
+    this.mediumWindow,
+    this.largeWindow,
+    this.xLargeWindow,
+  );
+
+  final AdaptiveWidgetBuilder? xSmallWindow;
+  final AdaptiveWidgetBuilder? smallWindow;
+  final AdaptiveWidgetBuilder? mediumWindow;
+  final AdaptiveWidgetBuilder? largeWindow;
+  final AdaptiveWidgetBuilder? xLargeWindow;
+
+  @override
+  @protected
+  AdaptiveWidgetBuilder? getBuilder(Device device) {
+    switch (device.windowSize) {
+      case WindowSize.xsmall:
+        return xSmallWindow;
+      case WindowSize.small:
+        return smallWindow;
+      case WindowSize.medium:
+        return mediumWindow;
+      case WindowSize.large:
+        return largeWindow;
+      case WindowSize.xlarge:
+        return xLargeWindow;
+    }
+  }
+}
+
 class AdaptiveBuilder extends StatelessWidget {
-  const AdaptiveBuilder({Key? key}) : super(key: key);
+  const AdaptiveBuilder({
+    super.key,
+    required this.builder,
+    //android
+    this.android,
+    //ios
+    this.ios,
+    //windows
+    this.windows,
+    //macos
+    this.macos,
+    //linux
+    this.linux,
+    //web
+    this.web,
+    //default
+    this.targetSize,
+  });
 
-  // ///android
-  // final AdaptiveWidgetBuilder? android;
-  // final AdaptiveWidgetBuilder? androidSmallHandset;
-  // final AdaptiveWidgetBuilder? androidMediumHandset;
-  // final AdaptiveWidgetBuilder? androidLargeHandset;
-  // final AdaptiveWidgetBuilder? androidSmallTablet;
-  // final AdaptiveWidgetBuilder? androidLargeTablet;
+  final AdaptiveWidgetBuilder builder;
 
-  // ///ios
-  // final AdaptiveWidgetBuilder? ios;
-  // final AdaptiveWidgetBuilder? iosSmallHandset;
-  // final AdaptiveWidgetBuilder? iosMediumHandset;
-  // final AdaptiveWidgetBuilder? iosLargeHandset;
-  // final AdaptiveWidgetBuilder? iosSmallTablet;
-  // final AdaptiveWidgetBuilder? iosLargeTablet;
+  ///android
+  final AdaptiveLayoutDelegateForHandset? android;
 
-  // ///windows
-  // final AdaptiveWidgetBuilder? windows;
-  // final AdaptiveWidgetBuilder? windowsXSmallWindow;
-  // final AdaptiveWidgetBuilder? windowsSmallWindow;
-  // final AdaptiveWidgetBuilder? windowsMediumWindow;
-  // final AdaptiveWidgetBuilder? windowsLargeWindow;
-  // final AdaptiveWidgetBuilder? windowsXLargeWindow;
+  ///ios
+  final AdaptiveLayoutDelegateForHandset? ios;
 
-  // ///linux
-  // final AdaptiveWidgetBuilder? linux;
-  // final AdaptiveWidgetBuilder? linuxXSmallWindow;
-  // final AdaptiveWidgetBuilder? linuxSmallWindow;
-  // final AdaptiveWidgetBuilder? linuxMediumWindow;
-  // final AdaptiveWidgetBuilder? linuxLargeWindow;
-  // final AdaptiveWidgetBuilder? linuxXLargeWindow;
+  ///windows
+  final AdaptiveLayoutDelegateForDesktop? windows;
 
-  // ///macos
-  // final AdaptiveWidgetBuilder? macos;
-  // final AdaptiveWidgetBuilder? macosXSmallWindow;
-  // final AdaptiveWidgetBuilder? macosSmallWindow;
-  // final AdaptiveWidgetBuilder? macosMediumWindow;
-  // final AdaptiveWidgetBuilder? macosLargeWindow;
-  // final AdaptiveWidgetBuilder? macosXLargeWindow;
+  ///linux
+  final AdaptiveLayoutDelegateForDesktop? linux;
 
-  // ///web
-  // final AdaptiveWidgetBuilder? web;
-  // final AdaptiveWidgetBuilder? webXSmallWindow;
-  // final AdaptiveWidgetBuilder? webSmallWindow;
-  // final AdaptiveWidgetBuilder? webMediumWindow;
-  // final AdaptiveWidgetBuilder? webLargeWindow;
-  // final AdaptiveWidgetBuilder? webXLargeWindow;
+  ///macos
+  final AdaptiveLayoutDelegateForDesktop? macos;
 
-  // ///handset
-  // final AdaptiveWidgetBuilder? handset;
-  // final AdaptiveWidgetBuilder? smallHandset;
-  // final AdaptiveWidgetBuilder? mediumHandset;
-  // final AdaptiveWidgetBuilder? largeHandset;
+  ///web
+  final AdaptiveLayoutDelegateForDesktop? web;
 
-  // ///tablet
-  // final AdaptiveWidgetBuilder? tablet;
-  // final AdaptiveWidgetBuilder? smallTablet;
-  // final AdaptiveWidgetBuilder? largeTablet;
-
-  // ///desktop
-  // final AdaptiveWidgetBuilder? desktop;
-  // final AdaptiveWidgetBuilder? desktopXSmallWindow;
-  // final AdaptiveWidgetBuilder? desktopSmallWindow;
-  // final AdaptiveWidgetBuilder? desktopMediumWindow;
-  // final AdaptiveWidgetBuilder? desktopLargeWindow;
-  // final AdaptiveWidgetBuilder? desktopXLargeWindow;
+  ///window size
+  final AdaptiveLayoutDelegateForDesktop? targetSize;
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    Device device = Device(context);
+    AdaptiveWidgetBuilder? b;
+
+    if (device.isWeb) {
+      b = web?.getBuilder(device);
+    } else {
+      switch (device.targetPlatform) {
+        case TargetPlatform.android:
+          b = android?.getBuilder(device);
+          break;
+        case TargetPlatform.iOS:
+          b = ios?.getBuilder(device);
+          break;
+        case TargetPlatform.windows:
+          b = windows?.getBuilder(device);
+          break;
+        case TargetPlatform.macOS:
+          b = macos?.getBuilder(device);
+          break;
+        case TargetPlatform.linux:
+          b = linux?.getBuilder(device);
+          break;
+        case TargetPlatform.fuchsia:
+          break;
+      }
+    }
+
+    b = b ?? targetSize?.getBuilder(device);
+
+    return b?.call(context, device) ?? builder.call(context, device);
   }
 }
 
