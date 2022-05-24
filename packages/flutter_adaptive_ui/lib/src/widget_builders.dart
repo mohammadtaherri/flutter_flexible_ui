@@ -3,7 +3,7 @@ part of flutter_adaptive_ui;
 typedef AdaptiveWidgetBuilder = Widget Function(
     BuildContext context, Device device);
 
-typedef BreakPointWidgetBuilder = Widget Function(
+typedef BreakpointWidgetBuilder = Widget Function(
     BuildContext context, Breakpoint breakpoint);
 
 class AdaptiveBuilder extends StatelessWidget {
@@ -182,23 +182,23 @@ class WindowBuilder extends StatelessWidget {
   }
 }
 
-class BreakPointBuilder extends StatelessWidget {
-  const BreakPointBuilder({
+class BreakpointBuilder extends StatelessWidget {
+  const BreakpointBuilder({
     super.key,
     required this.builder,
-  }) : fromConstraints = false;
+  }) : _fromConstraints = false;
 
-  const BreakPointBuilder.fromConstraints({
+  const BreakpointBuilder.fromConstraints({
     super.key,
     required this.builder,
-  }) : fromConstraints = true;
+  }) : _fromConstraints = true;
 
-  final BreakPointWidgetBuilder builder;
-  final bool fromConstraints;
+  final BreakpointWidgetBuilder builder;
+  final bool _fromConstraints;
 
   @override
   Widget build(BuildContext context) {
-    if (fromConstraints) {
+    if (_fromConstraints) {
       return LayoutBuilder(
         builder: (BuildContext ctx, BoxConstraints constraints) => builder.call(
           ctx,
