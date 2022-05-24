@@ -1,5 +1,6 @@
 library flutter_adaptive_ui;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 part './src/types.dart';

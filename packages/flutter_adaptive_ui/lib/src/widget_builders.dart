@@ -101,6 +101,80 @@ class PlatformBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    Device device = Device(context);
+
+    Widget? child;
+
+    if (device.targetPlatform == TargetPlatform.android) {
+      child = android?.call(context, device);
+    }
+
+    if (device.targetPlatform == TargetPlatform.iOS) {
+      child = ios?.call(context, device);
+    }
+
+    if (device.targetPlatform == TargetPlatform.windows) {
+      child = windows?.call(context, device);
+    }
+
+    if (device.targetPlatform == TargetPlatform.macOS) {
+      child = macos?.call(context, device);
+    }
+
+    if (device.targetPlatform == TargetPlatform.linux) {
+      child = linux?.call(context, device);
+    }
+
+    if (device.isWeb) {
+      child = web?.call(context, device);
+    }
+
+    return child ?? orElse(context, device);
+  }
+}
+
+class WindowBuilder extends StatelessWidget {
+  const WindowBuilder({
+    super.key,
+    this.xSmall,
+    this.small,
+    this.medium,
+    this.large,
+    this.xLarge,
+    required this.orElse,
+  });
+
+  final AdaptiveWidgetBuilder? xSmall;
+  final AdaptiveWidgetBuilder? small;
+  final AdaptiveWidgetBuilder? medium;
+  final AdaptiveWidgetBuilder? large;
+  final AdaptiveWidgetBuilder? xLarge;
+  final AdaptiveWidgetBuilder orElse;
+
+  @override
+  Widget build(BuildContext context) {
+    Device device = Device(context);
+
+    Widget? child;
+
+    switch (device.windowSize) {
+      case WindowSize.xsmall:
+        child = xSmall?.call(context, device);
+        break;
+      case WindowSize.small:
+        child = small?.call(context, device);
+        break;
+      case WindowSize.medium:
+        child = medium?.call(context, device);
+        break;
+      case WindowSize.large:
+        child = large?.call(context, device);
+        break;
+      case WindowSize.xlarge:
+        child = xLarge?.call(context, device);
+        break;
+    }
+
+    return child ?? orElse(context, device);
   }
 }
