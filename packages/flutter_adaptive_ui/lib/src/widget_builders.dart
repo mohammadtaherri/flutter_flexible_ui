@@ -3,9 +3,6 @@ part of flutter_adaptive_ui;
 typedef AdaptiveWidgetBuilder = Widget Function(
     BuildContext context, Device device);
 
-typedef BreakpointWidgetBuilder = Widget Function(
-    BuildContext context, Breakpoint breakpoint);
-
 abstract class AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegate._();
 
@@ -126,7 +123,7 @@ class AdaptiveBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Device device = Device(context);
+    Device device = Device.fromMediaQuery(context);
     AdaptiveWidgetBuilder? b;
 
     if (device.isWeb) {
@@ -181,7 +178,7 @@ class PlatformBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Device device = Device(context);
+    Device device = Device.fromMediaQuery(context);
 
     Widget? child;
 
@@ -233,7 +230,7 @@ class WindowBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Device device = Device(context);
+    Device device = Device.fromMediaQuery(context);
 
     Widget? child;
 
@@ -256,37 +253,5 @@ class WindowBuilder extends StatelessWidget {
     }
 
     return child ?? orElse(context, device);
-  }
-}
-
-class BreakpointBuilder extends StatelessWidget {
-  const BreakpointBuilder({
-    super.key,
-    required this.builder,
-  }) : _fromConstraints = false;
-
-  const BreakpointBuilder.fromConstraints({
-    super.key,
-    required this.builder,
-  }) : _fromConstraints = true;
-
-  final BreakpointWidgetBuilder builder;
-  final bool _fromConstraints;
-
-  @override
-  Widget build(BuildContext context) {
-    if (_fromConstraints) {
-      return LayoutBuilder(
-        builder: (BuildContext ctx, BoxConstraints constraints) => builder.call(
-          ctx,
-          Breakpoint.fromConstraints(constraints),
-        ),
-      );
-    }
-
-    return builder(
-      context,
-      Breakpoint.fromMediaQuery(context),
-    );
   }
 }

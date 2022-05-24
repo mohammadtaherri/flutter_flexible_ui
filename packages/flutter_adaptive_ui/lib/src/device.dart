@@ -1,27 +1,100 @@
 part of flutter_adaptive_ui;
 
 class Device {
-  Device(BuildContext context) {
-    mediaQuery = MediaQuery.of(context);
-    breakpoint = Breakpoint.fromMediaQuery(context);
+  Device({
+    required this.windowSize,
+    required this.windowType,
+  }) {
     targetPlatform = defaultTargetPlatform;
     isWeb = kIsWeb;
   }
 
-  late final MediaQueryData mediaQuery;
-  late final Breakpoint breakpoint;
+  final WindowSize windowSize;
+  final WindowType windowType;
+
   late final TargetPlatform targetPlatform;
   late final bool isWeb;
 
-  WindowSize get windowSize => breakpoint.windowSize;
-  WindowType get windowType => breakpoint.windowType;
-  int get columns => breakpoint.columns;
-  double get gutters => breakpoint.gutters;
-  double get margins => breakpoint.margins;
+  factory Device.fromMediaQuery(BuildContext context) {
+    return _calc(MediaQuery.of(context).size.width);
+  }
 
-  double get width => mediaQuery.size.width;
-  double get height => mediaQuery.size.height;
-  double get pixelRatio => mediaQuery.devicePixelRatio;
-  double get physicalWidth => width * pixelRatio;
-  double get physicalHeight => height * pixelRatio;
+  static Device _calc(double width) {
+    if (width >= 1920) {
+      return Device(
+        windowType: WindowType.desktop,
+        windowSize: WindowSize.xlarge,
+      );
+    }
+    if (width >= 1600) {
+      return Device(
+        windowType: WindowType.desktop,
+        windowSize: WindowSize.large,
+      );
+    }
+    if (width >= 1440) {
+      return Device(
+        windowType: WindowType.desktop,
+        windowSize: WindowSize.large,
+      );
+    }
+    if (width >= 1280) {
+      return Device(
+        windowType: WindowType.desktop,
+        windowSize: WindowSize.medium,
+      );
+    }
+    if (width >= 1024) {
+      return Device(
+        windowType: WindowType.desktop,
+        windowSize: WindowSize.medium,
+      );
+    }
+    if (width >= 960) {
+      return Device(
+        windowType: WindowType.largeTablet,
+        windowSize: WindowSize.small,
+      );
+    }
+    if (width >= 840) {
+      return Device(
+        windowType: WindowType.largeTablet,
+        windowSize: WindowSize.small,
+      );
+    }
+    if (width >= 720) {
+      return Device(
+        windowType: WindowType.largeTablet,
+        windowSize: WindowSize.small,
+      );
+    }
+    if (width >= 600) {
+      return Device(
+        windowType: WindowType.smallTablet,
+        windowSize: WindowSize.small,
+      );
+    }
+    if (width >= 480) {
+      return Device(
+        windowType: WindowType.largeHandset,
+        windowSize: WindowSize.xsmall,
+      );
+    }
+    if (width >= 400) {
+      return Device(
+        windowType: WindowType.largeHandset,
+        windowSize: WindowSize.xsmall,
+      );
+    }
+    if (width >= 360) {
+      return Device(
+        windowType: WindowType.mediumHandset,
+        windowSize: WindowSize.xsmall,
+      );
+    }
+    return Device(
+      windowType: WindowType.smallHandset,
+      windowSize: WindowSize.xsmall,
+    );
+  }
 }
