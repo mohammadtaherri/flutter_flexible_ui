@@ -47,6 +47,35 @@ class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
   }
 }
 
+class AdaptiveLayoutDelegateWithMinimallWindowType
+    implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateWithMinimallWindowType(
+    this.handset,
+    this.tablet,
+    this.desktop,
+  );
+
+  final AdaptiveWidgetBuilder? handset;
+  final AdaptiveWidgetBuilder? tablet;
+  final AdaptiveWidgetBuilder? desktop;
+
+  @override
+  @protected
+  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
+    switch (device.windowType) {
+      case WindowType.smallHandset:
+      case WindowType.mediumHandset:
+      case WindowType.largeHandset:
+        return handset;
+      case WindowType.smallTablet:
+      case WindowType.largeTablet:
+        return tablet;
+      case WindowType.desktop:
+        return desktop;
+    }
+  }
+}
+
 class AdaptiveLayoutDelegateWithWindowSize implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithWindowSize(
     this.xSmall,
@@ -110,41 +139,24 @@ class AdaptiveBuilder extends StatelessWidget {
   const AdaptiveBuilder({
     super.key,
     required this.builder,
-    //android
     this.androidBuilder,
-    //ios
+    this.fuchsiaBuilder,
     this.iosBuilder,
-    //windows
     this.windowsBuilder,
-    //macos
     this.macosBuilder,
-    //linux
     this.linuxBuilder,
-    //web
     this.webBuilder,
     this.allOsBuilder,
   });
 
   final AdaptiveWidgetBuilder builder;
-
-  ///android
   final AdaptiveLayoutDelegate? androidBuilder;
-
-  ///ios
+  final AdaptiveLayoutDelegate? fuchsiaBuilder;
   final AdaptiveLayoutDelegate? iosBuilder;
-
-  ///windows
   final AdaptiveLayoutDelegate? windowsBuilder;
-
-  ///linux
   final AdaptiveLayoutDelegate? linuxBuilder;
-
-  ///macos
   final AdaptiveLayoutDelegate? macosBuilder;
-
-  ///web
   final AdaptiveLayoutDelegate? webBuilder;
-
   final AdaptiveLayoutDelegate? allOsBuilder;
 
   @override
@@ -159,6 +171,9 @@ class AdaptiveBuilder extends StatelessWidget {
         case TargetPlatform.android:
           b = androidBuilder?.getBuilder(device);
           break;
+        case TargetPlatform.fuchsia:
+          b = fuchsiaBuilder?.getBuilder(device);
+          break;
         case TargetPlatform.iOS:
           b = iosBuilder?.getBuilder(device);
           break;
@@ -170,8 +185,6 @@ class AdaptiveBuilder extends StatelessWidget {
           break;
         case TargetPlatform.linux:
           b = linuxBuilder?.getBuilder(device);
-          break;
-        case TargetPlatform.fuchsia:
           break;
       }
     }
