@@ -26,7 +26,3 @@ enum WindowType {
   final double maxWidth;
   final String? debugLabel;
 }
-
-enum DeviceType { handset, tablet, desktop }
-
-enum PlatformType { android, ios, windows, macos, linux, web }
