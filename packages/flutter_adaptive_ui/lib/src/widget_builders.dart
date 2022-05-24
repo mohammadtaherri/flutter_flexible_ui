@@ -17,7 +17,9 @@ class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
     this.largeHandset,
     this.smallTablet,
     this.largeTablet,
-    this.desktop,
+    this.smallDesktop,
+    this.mediumDesktop,
+    this.largeDesktop,
   );
 
   final AdaptiveWidgetBuilder? smallHandset;
@@ -25,7 +27,9 @@ class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
   final AdaptiveWidgetBuilder? largeHandset;
   final AdaptiveWidgetBuilder? smallTablet;
   final AdaptiveWidgetBuilder? largeTablet;
-  final AdaptiveWidgetBuilder? desktop;
+  final AdaptiveWidgetBuilder? smallDesktop;
+  final AdaptiveWidgetBuilder? mediumDesktop;
+  final AdaptiveWidgetBuilder? largeDesktop;
 
   @override
   @protected
@@ -41,8 +45,12 @@ class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
         return smallTablet;
       case WindowType.largeTablet:
         return largeTablet;
-      case WindowType.desktop:
-        return desktop;
+      case WindowType.smallDesktop:
+        return smallDesktop;
+      case WindowType.mediumDesktop:
+        return mediumDesktop;
+      case WindowType.largeDesktop:
+        return largeDesktop;
     }
   }
 }
@@ -70,7 +78,9 @@ class AdaptiveLayoutDelegateWithMinimallWindowType
       case WindowType.smallTablet:
       case WindowType.largeTablet:
         return tablet;
-      case WindowType.desktop:
+      case WindowType.smallDesktop:
+      case WindowType.mediumDesktop:
+      case WindowType.largeDesktop:
         return desktop;
     }
   }

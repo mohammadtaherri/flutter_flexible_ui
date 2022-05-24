@@ -19,7 +19,9 @@ enum WindowType {
   largeHandset(400, 599, 'Large Handset'),
   smallTablet(600, 719, 'Small Tablet'),
   largeTablet(720, 1023, 'Large Tablet'),
-  desktop(1024, double.infinity, 'Desktop');
+  smallDesktop(1024, 1439, 'Small Desktop'),
+  mediumDesktop(1440, 1919, 'Medium Desktop'),
+  largeDesktop(1920, double.infinity, 'Large Desktop');
 
   const WindowType(this.minWidth, this.maxWidth, [this.debugLabel]);
   final double minWidth;

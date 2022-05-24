@@ -40,46 +40,25 @@ class DeviceConfig {
   static DeviceConfig _calc(double width) {
     if (width >= 1920) {
       return DeviceConfig(
-        windowType: WindowType.desktop,
+        windowType: WindowType.largeDesktop,
         windowSize: WindowSize.xlarge,
       );
     }
-    if (width >= 1600) {
-      return DeviceConfig(
-        windowType: WindowType.desktop,
-        windowSize: WindowSize.large,
-      );
-    }
+
     if (width >= 1440) {
       return DeviceConfig(
-        windowType: WindowType.desktop,
+        windowType: WindowType.mediumDesktop,
         windowSize: WindowSize.large,
       );
     }
-    if (width >= 1280) {
-      return DeviceConfig(
-        windowType: WindowType.desktop,
-        windowSize: WindowSize.medium,
-      );
-    }
+
     if (width >= 1024) {
       return DeviceConfig(
-        windowType: WindowType.desktop,
+        windowType: WindowType.smallDesktop,
         windowSize: WindowSize.medium,
       );
     }
-    if (width >= 960) {
-      return DeviceConfig(
-        windowType: WindowType.largeTablet,
-        windowSize: WindowSize.small,
-      );
-    }
-    if (width >= 840) {
-      return DeviceConfig(
-        windowType: WindowType.largeTablet,
-        windowSize: WindowSize.small,
-      );
-    }
+
     if (width >= 720) {
       return DeviceConfig(
         windowType: WindowType.largeTablet,
