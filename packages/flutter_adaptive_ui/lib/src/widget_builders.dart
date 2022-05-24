@@ -1,9 +1,12 @@
 part of flutter_adaptive_ui;
 
+/// The signature of the [AdaptiveBuilder] builder function.
 typedef AdaptiveWidgetBuilder = Widget Function(
     BuildContext context, DeviceConfig device);
 
 abstract class AdaptiveLayoutDelegate {
+  /// Abstract const constructor. This constructor enables subclasses to provide
+  /// const constructors so that they can be used in const expressions.
   const AdaptiveLayoutDelegate._();
 
   @protected
