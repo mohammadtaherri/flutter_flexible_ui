@@ -26,3 +26,5 @@ enum WindowType {
   final double maxWidth;
   final String? debugLabel;
 }
+
+enum DesignLanguage { material, cupertino, fluent }
