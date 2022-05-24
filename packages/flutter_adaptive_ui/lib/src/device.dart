@@ -7,11 +7,29 @@ class Device {
   }) {
     targetPlatform = defaultTargetPlatform;
     isWeb = kIsWeb;
+
+    switch (targetPlatform) {
+      case TargetPlatform.android:
+      case TargetPlatform.fuchsia:
+        designLanguage = DesignLanguage.material;
+        break;
+      case TargetPlatform.iOS:
+      case TargetPlatform.macOS:
+        designLanguage = DesignLanguage.cupertino;
+        break;
+      case TargetPlatform.windows:
+        designLanguage = DesignLanguage.fluent;
+        break;
+      default:
+        designLanguage = DesignLanguage.material;
+        break;
+    }
   }
 
   final WindowSize windowSize;
   final WindowType windowType;
 
+  late final DesignLanguage designLanguage;
   late final TargetPlatform targetPlatform;
   late final bool isWeb;
 
