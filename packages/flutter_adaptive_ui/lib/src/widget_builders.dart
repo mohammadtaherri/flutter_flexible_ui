@@ -78,3 +78,29 @@ class AdaptiveBuilder extends StatelessWidget {
     return Container();
   }
 }
+
+class PlatformBuilder extends StatelessWidget {
+  const PlatformBuilder({
+    super.key,
+    this.android,
+    this.ios,
+    this.windows,
+    this.macos,
+    this.linux,
+    this.web,
+    required this.orElse,
+  });
+
+  final AdaptiveWidgetBuilder? android;
+  final AdaptiveWidgetBuilder? ios;
+  final AdaptiveWidgetBuilder? windows;
+  final AdaptiveWidgetBuilder? macos;
+  final AdaptiveWidgetBuilder? linux;
+  final AdaptiveWidgetBuilder? web;
+  final AdaptiveWidgetBuilder orElse;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
