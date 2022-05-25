@@ -176,38 +176,46 @@ class AdaptiveBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Screen screen = Screen.fromMediaQueryAndBreakpoint(
-      MediaQuery.of(context),
-      breakpointData ?? Breakpoint.of(context) ?? const BreakpointData(),
+    return LayoutBuilder(
+      builder: (BuildContext ctx, BoxConstraints constraints) {
+        Screen screen = Screen(
+          mediaQueryData: MediaQuery.of(context),
+          breakpointData: breakpointData ??
+              Breakpoint.of(context) ??
+              const BreakpointData(),
+          layoutConstraints: constraints,
+        );
+
+        AdaptiveWidgetBuilder? b;
+
+        switch (screen.platform) {
+          case PlatformType.web:
+            b = webDelegate?.getBuilder(screen);
+            break;
+          case PlatformType.android:
+            b = androidDelegate?.getBuilder(screen);
+            break;
+          case PlatformType.fuchsia:
+            b = fuchsiaDelegate?.getBuilder(screen);
+            break;
+          case PlatformType.iOS:
+            b = iosDelegate?.getBuilder(screen);
+            break;
+          case PlatformType.windows:
+            b = windowsDelegate?.getBuilder(screen);
+            break;
+          case PlatformType.macOS:
+            b = macosDelegate?.getBuilder(screen);
+            break;
+          case PlatformType.linux:
+            b = linuxDelegate?.getBuilder(screen);
+            break;
+        }
+
+        return b?.call(context, screen) ??
+            allOsDelegate?.getBuilder(screen)?.call(context, screen) ??
+            builder.call(context, screen);
+      },
     );
-    AdaptiveWidgetBuilder? b;
-
-    switch (screen.platform) {
-      case PlatformType.web:
-        b = webDelegate?.getBuilder(screen);
-        break;
-      case PlatformType.android:
-        b = androidDelegate?.getBuilder(screen);
-        break;
-      case PlatformType.fuchsia:
-        b = fuchsiaDelegate?.getBuilder(screen);
-        break;
-      case PlatformType.iOS:
-        b = iosDelegate?.getBuilder(screen);
-        break;
-      case PlatformType.windows:
-        b = windowsDelegate?.getBuilder(screen);
-        break;
-      case PlatformType.macOS:
-        b = macosDelegate?.getBuilder(screen);
-        break;
-      case PlatformType.linux:
-        b = linuxDelegate?.getBuilder(screen);
-        break;
-    }
-
-    return b?.call(context, screen) ??
-        allOsDelegate?.getBuilder(screen)?.call(context, screen) ??
-        builder.call(context, screen);
   }
 }

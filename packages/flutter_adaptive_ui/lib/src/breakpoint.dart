@@ -28,7 +28,7 @@ class BreakpointData {
   final double mediumDesktop;
   final double largeDesktop;
 
-  ScreenSize getScreenSize(double widht) {
+  ScreenSize _getScreenSize(double widht) {
     debugAssertIsValid();
     if (widht >= xlarge) return ScreenSize.xlarge;
     if (widht >= large) return ScreenSize.large;
@@ -37,7 +37,7 @@ class BreakpointData {
     return ScreenSize.xsmall;
   }
 
-  ScreenType getScreenType(double width) {
+  ScreenType _getScreenType(double width) {
     debugAssertIsValid();
     if (width >= largeDesktop) return ScreenType.largeDesktop;
     if (width >= mediumDesktop) return ScreenType.mediumDesktop;
