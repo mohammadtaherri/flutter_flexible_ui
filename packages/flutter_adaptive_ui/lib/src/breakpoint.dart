@@ -1,9 +1,25 @@
 part of flutter_adaptive_ui;
 
 abstract class BreakPoint {
-  BreakPoint() {
+  BreakPoint._() {
     debugAssertIsValid();
   }
+
+  factory BreakPoint({
+    required double small,
+    required double medium,
+    required double large,
+    required double xlarge,
+    required double mediumHandset,
+    required double largeHandset,
+    required double smallTablet,
+    required double largeTablet,
+    required double smallDesktop,
+    required double mediumDesktop,
+    required double largeDesktop,
+  }) = _CustomBreakpoint;
+
+  factory BreakPoint.dftl() = _DefaultBreakpoint;
 
   double get small;
   double get medium;
@@ -37,6 +53,33 @@ abstract class BreakPoint {
     return ScreenType.smallHandset;
   }
 
+  BreakPoint copyWith({
+    double? small,
+    double? medium,
+    double? large,
+    double? xlarge,
+    double? mediumHandset,
+    double? largeHandset,
+    double? smallTablet,
+    double? largeTablet,
+    double? smallDesktop,
+    double? mediumDesktop,
+    double? largeDesktop,
+  }) =>
+      BreakPoint(
+        small: small ?? this.small,
+        medium: medium ?? this.medium,
+        large: large ?? this.large,
+        xlarge: xlarge ?? this.xlarge,
+        mediumHandset: mediumHandset ?? this.mediumHandset,
+        largeHandset: largeHandset ?? this.largeHandset,
+        smallTablet: smallTablet ?? this.smallTablet,
+        largeTablet: largeTablet ?? this.largeTablet,
+        smallDesktop: smallDesktop ?? this.smallDesktop,
+        mediumDesktop: mediumDesktop ?? this.mediumDesktop,
+        largeDesktop: largeDesktop ?? this.largeDesktop,
+      );
+
   void debugAssertIsValid() {
     void check(double size1, double size2, String label1, String label2) {
       assert(size2 > size1, '$label2 must be greater than $label1');
@@ -55,7 +98,9 @@ abstract class BreakPoint {
   }
 }
 
-class DefaultBreakpoint extends BreakPoint {
+class _DefaultBreakpoint extends BreakPoint {
+  _DefaultBreakpoint() : super._();
+
   @override
   double get small => 600;
 
@@ -88,4 +133,53 @@ class DefaultBreakpoint extends BreakPoint {
 
   @override
   double get largeDesktop => 1920;
+}
+
+class _CustomBreakpoint extends BreakPoint {
+  _CustomBreakpoint({
+    required this.small,
+    required this.medium,
+    required this.large,
+    required this.xlarge,
+    required this.mediumHandset,
+    required this.largeHandset,
+    required this.smallTablet,
+    required this.largeTablet,
+    required this.smallDesktop,
+    required this.mediumDesktop,
+    required this.largeDesktop,
+  }) : super._();
+
+  @override
+  final double largeDesktop;
+
+  @override
+  final double largeHandset;
+
+  @override
+  final double largeTablet;
+
+  @override
+  final double medium;
+
+  @override
+  final double mediumDesktop;
+
+  @override
+  final double mediumHandset;
+
+  @override
+  final double small;
+
+  @override
+  final double smallDesktop;
+
+  @override
+  final double smallTablet;
+
+  @override
+  final double xlarge;
+
+  @override
+  final double large;
 }
