@@ -230,14 +230,26 @@ class Breakpoint extends InheritedWidget {
     return oldWidget.breakPointData != breakPointData;
   }
 
+  /// Find the current [BreakPointData] in the widget tree.
   static BreakpointData of(BuildContext context) {
-    return context
-            .dependOnInheritedWidgetOfExactType<Breakpoint>()
-            ?.breakPointData ??
-        const BreakpointData.dftl();
+    final inherited = context.dependOnInheritedWidgetOfExactType<Breakpoint>();
+    assert(inherited != null, ''' 
+    No [Breakpoint] found in context.
+
+    To use [Breakpoint], please add [Breakpoint] widget to the widget tree.
+
+    Widget build(BuildContext context) {
+      return const Breakpoint(
+        child: MaterialApp(),
+      );
+    }
+  ''');
+    return inherited!.breakPointData;
   }
 
-  static BreakpointData? meybeOf(BuildContext context) {
+  /// Find the current [BreakPointData] in the widget tree.
+  /// If there is no [Breakpoint], return null.
+  static BreakpointData? maybeOf(BuildContext context) {
     return context
         .dependOnInheritedWidgetOfExactType<Breakpoint>()
         ?.breakPointData;
