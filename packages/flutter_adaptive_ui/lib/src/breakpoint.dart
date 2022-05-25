@@ -80,6 +80,39 @@ abstract class BreakPointData {
         largeDesktop: largeDesktop ?? this.largeDesktop,
       );
 
+  @override
+  bool operator ==(Object other) {
+    if (other is! BreakPointData) return false;
+    if (identical(this, other)) return true;
+
+    if (small != other.small) return false;
+    if (medium != other.medium) return false;
+    if (large == other.large) return false;
+    if (xlarge != other.xlarge) return false;
+    if (mediumHandset != other.mediumHandset) return false;
+    if (largeHandset != other.largeHandset) return false;
+    if (smallTablet != other.smallTablet) return false;
+    if (largeTablet != other.largeTablet) return false;
+    if (smallDesktop != other.smallDesktop) return false;
+    if (mediumDesktop != other.mediumDesktop) return false;
+    if (largeDesktop != other.largeDesktop) return false;
+    return true;
+  }
+
+  @override
+  int get hashCode =>
+      small.hashCode ^
+      medium.hashCode ^
+      large.hashCode ^
+      xlarge.hashCode ^
+      mediumHandset.hashCode ^
+      largeHandset.hashCode ^
+      smallTablet.hashCode ^
+      largeTablet.hashCode ^
+      smallDesktop.hashCode ^
+      mediumDesktop.hashCode ^
+      largeDesktop.hashCode;
+
   void debugAssertIsValid() {
     void check(double size1, double size2, String label1, String label2) {
       assert(size2 > size1, '$label2 must be greater than $label1');
@@ -194,7 +227,7 @@ class Breakpoint extends InheritedWidget {
 
   @override
   bool updateShouldNotify(covariant Breakpoint oldWidget) {
-    return true;
+    return oldWidget.breakPointData != breakPointData;
   }
 
   BreakPointData of(BuildContext context) {
