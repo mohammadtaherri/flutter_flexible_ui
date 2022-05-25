@@ -1,5 +1,10 @@
 ## 0.4.0
 
+* Add some extension methods to BuildContext (breakpoint , mabybreakpoint)
+* Doc: Add some documents.
+
+## 0.4.0
+
 * Update AdaptiveBuilder: get breakpointData in constructor.
 * Add PlatformType (enum).
 * Add getDefaultPlatform top level function.
