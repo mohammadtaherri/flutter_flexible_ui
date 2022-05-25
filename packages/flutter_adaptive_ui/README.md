@@ -199,3 +199,83 @@ This widget accepts following params:
   final AdaptiveLayoutDelegate? allOsBuilder;
   final BreakpointData? breakpointData;
 ```
+
+* **breakpointData**
+
+Use this param to override default sizes or sizes that obtain from nearest `Breakpoint`:
+
+1.
+```dart
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return AdaptiveBuilder(
+      breakpointData: Breakpoint.of(context).copyWith(
+        small: ,
+        medium: ,
+        large: ,
+        mediumHandset: ,
+        ...
+      ),
+    );
+  }
+}
+```
+
+2.
+```dart
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return AdaptiveBuilder(
+      breakpointData: BreakpointData(
+        small: 350,
+        medium: 700,
+        large: 1200,
+        xlarge: 1800,
+        mediumHandset: 350,
+        largeHandset: 420,
+        smallTablet: 600,
+        largeTablet: 900,
+        smallDesktop: 1100,
+        mediumDesktop: 1400,
+        largeDesktop: 1900,
+      ),
+    );
+  }
+}
+```
+
+If no param is passed,`AdaptiveBuilder` will obtain `breakpointData` from nearest `Breakpoint` or use default sizes.
+
+
+
+* **androidDelegate**
+* **fuchsiaDelegate**
+* **iosDelegate**
+* **windowsDelegate**
+* **macosDelegate**
+* **linuxDelegate**
+* **webDelegate**
+
+All this params are optional.
+
+Use this params to build your screen base on **_Operating System_**.
+
+You must pass an object of `AdaptiveLayoutDelegate`.This class is an abstract class and you can use custom implementations.
+
+* **AdaptiveLayoutDelegateWithScreenType**
