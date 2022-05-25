@@ -13,7 +13,7 @@ enum ScreenSize {
   final String? debugLabel;
 }
 
-enum WindowType {
+enum ScreenType {
   smallHandset(0, 359, 'Small Handset'),
   mediumHandset(360, 399, 'Medium Handset'),
   largeHandset(400, 599, 'Large Handset'),
@@ -23,7 +23,7 @@ enum WindowType {
   mediumDesktop(1440, 1919, 'Medium Desktop'),
   largeDesktop(1920, double.infinity, 'Large Desktop');
 
-  const WindowType(this.minWidth, this.maxWidth, [this.debugLabel]);
+  const ScreenType(this.minWidth, this.maxWidth, [this.debugLabel]);
   final double minWidth;
   final double maxWidth;
   final String? debugLabel;

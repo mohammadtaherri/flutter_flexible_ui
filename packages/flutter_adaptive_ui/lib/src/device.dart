@@ -3,7 +3,7 @@ part of flutter_adaptive_ui;
 class DeviceConfig {
   DeviceConfig({
     required this.screenSize,
-    required this.windowType,
+    required this.screenType,
   }) {
     targetPlatform = defaultTargetPlatform;
     isWeb = kIsWeb;
@@ -32,7 +32,7 @@ class DeviceConfig {
   /// small handset , medium handset , large hanset
   /// small tablet , large tablet
   /// small desktop , medium desktop , large desktop
-  final WindowType windowType;
+  final ScreenType screenType;
 
   /// If [targetPlatform] is android or fuchsia, it will be [DesignLanguage.material]
   /// If [targetPlatform] is ios or macos, it will be [DesignLanguage.cupertino]
@@ -53,49 +53,49 @@ class DeviceConfig {
   static DeviceConfig _calc(double width) {
     if (width >= 1920) {
       return DeviceConfig(
-        windowType: WindowType.largeDesktop,
+        screenType: ScreenType.largeDesktop,
         screenSize: ScreenSize.xlarge,
       );
     }
     if (width >= 1440) {
       return DeviceConfig(
-        windowType: WindowType.mediumDesktop,
+        screenType: ScreenType.mediumDesktop,
         screenSize: ScreenSize.large,
       );
     }
     if (width >= 1024) {
       return DeviceConfig(
-        windowType: WindowType.smallDesktop,
+        screenType: ScreenType.smallDesktop,
         screenSize: ScreenSize.medium,
       );
     }
 
     if (width >= 720) {
       return DeviceConfig(
-        windowType: WindowType.largeTablet,
+        screenType: ScreenType.largeTablet,
         screenSize: ScreenSize.small,
       );
     }
     if (width >= 600) {
       return DeviceConfig(
-        windowType: WindowType.smallTablet,
+        screenType: ScreenType.smallTablet,
         screenSize: ScreenSize.small,
       );
     }
     if (width >= 400) {
       return DeviceConfig(
-        windowType: WindowType.largeHandset,
+        screenType: ScreenType.largeHandset,
         screenSize: ScreenSize.xsmall,
       );
     }
     if (width >= 360) {
       return DeviceConfig(
-        windowType: WindowType.mediumHandset,
+        screenType: ScreenType.mediumHandset,
         screenSize: ScreenSize.xsmall,
       );
     }
     return DeviceConfig(
-      windowType: WindowType.smallHandset,
+      screenType: ScreenType.smallHandset,
       screenSize: ScreenSize.xsmall,
     );
   }

@@ -37,22 +37,22 @@ class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
   @override
   @protected
   AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
-    switch (device.windowType) {
-      case WindowType.smallHandset:
+    switch (device.screenType) {
+      case ScreenType.smallHandset:
         return smallHandset;
-      case WindowType.mediumHandset:
+      case ScreenType.mediumHandset:
         return mediumHandset;
-      case WindowType.largeHandset:
+      case ScreenType.largeHandset:
         return largeHandset;
-      case WindowType.smallTablet:
+      case ScreenType.smallTablet:
         return smallTablet;
-      case WindowType.largeTablet:
+      case ScreenType.largeTablet:
         return largeTablet;
-      case WindowType.smallDesktop:
+      case ScreenType.smallDesktop:
         return smallDesktop;
-      case WindowType.mediumDesktop:
+      case ScreenType.mediumDesktop:
         return mediumDesktop;
-      case WindowType.largeDesktop:
+      case ScreenType.largeDesktop:
         return largeDesktop;
     }
   }
@@ -73,17 +73,17 @@ class AdaptiveLayoutDelegateWithMinimallWindowType
   @override
   @protected
   AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
-    switch (device.windowType) {
-      case WindowType.smallHandset:
-      case WindowType.mediumHandset:
-      case WindowType.largeHandset:
+    switch (device.screenType) {
+      case ScreenType.smallHandset:
+      case ScreenType.mediumHandset:
+      case ScreenType.largeHandset:
         return handset;
-      case WindowType.smallTablet:
-      case WindowType.largeTablet:
+      case ScreenType.smallTablet:
+      case ScreenType.largeTablet:
         return tablet;
-      case WindowType.smallDesktop:
-      case WindowType.mediumDesktop:
-      case WindowType.largeDesktop:
+      case ScreenType.smallDesktop:
+      case ScreenType.mediumDesktop:
+      case ScreenType.largeDesktop:
         return desktop;
     }
   }
