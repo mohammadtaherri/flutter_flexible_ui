@@ -14,7 +14,7 @@ abstract class AdaptiveLayoutDelegate {
 }
 
 class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
-  const AdaptiveLayoutDelegateWithScreenType(
+  const AdaptiveLayoutDelegateWithScreenType({
     this.smallHandset,
     this.mediumHandset,
     this.largeHandset,
@@ -23,7 +23,7 @@ class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
     this.smallDesktop,
     this.mediumDesktop,
     this.largeDesktop,
-  );
+  });
 
   final AdaptiveWidgetBuilder? smallHandset;
   final AdaptiveWidgetBuilder? mediumHandset;
@@ -60,11 +60,11 @@ class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
 
 class AdaptiveLayoutDelegateWithMinimallScreenType
     implements AdaptiveLayoutDelegate {
-  const AdaptiveLayoutDelegateWithMinimallScreenType(
+  const AdaptiveLayoutDelegateWithMinimallScreenType({
     this.handset,
     this.tablet,
     this.desktop,
-  );
+  });
 
   final AdaptiveWidgetBuilder? handset;
   final AdaptiveWidgetBuilder? tablet;
@@ -90,13 +90,13 @@ class AdaptiveLayoutDelegateWithMinimallScreenType
 }
 
 class AdaptiveLayoutDelegateWithScreenSize implements AdaptiveLayoutDelegate {
-  const AdaptiveLayoutDelegateWithScreenSize(
+  const AdaptiveLayoutDelegateWithScreenSize({
     this.xSmall,
     this.small,
     this.medium,
     this.large,
     this.xLarge,
-  );
+  });
 
   final AdaptiveWidgetBuilder? xSmall;
   final AdaptiveWidgetBuilder? small;
@@ -124,11 +124,11 @@ class AdaptiveLayoutDelegateWithScreenSize implements AdaptiveLayoutDelegate {
 
 class AdaptiveLayoutDelegateWithDesignLanguage
     implements AdaptiveLayoutDelegate {
-  const AdaptiveLayoutDelegateWithDesignLanguage(
+  const AdaptiveLayoutDelegateWithDesignLanguage({
     this.material,
     this.cupertino,
     this.fluent,
-  );
+  });
 
   final AdaptiveWidgetBuilder? material;
   final AdaptiveWidgetBuilder? cupertino;
