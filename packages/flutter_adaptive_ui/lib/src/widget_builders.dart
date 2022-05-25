@@ -186,30 +186,30 @@ class AdaptiveBuilder extends StatelessWidget {
 
     switch (device.platform) {
       case PlatformType.web:
-        b = webBuilder?.getBuilder(device);
+        b = webDelegate?.getBuilder(device);
         break;
       case PlatformType.android:
-        b = androidBuilder?.getBuilder(device);
+        b = androidDelegate?.getBuilder(device);
         break;
       case PlatformType.fuchsia:
-        b = fuchsiaBuilder?.getBuilder(device);
+        b = fuchsiaDelegate?.getBuilder(device);
         break;
       case PlatformType.iOS:
-        b = iosBuilder?.getBuilder(device);
+        b = iosDelegate?.getBuilder(device);
         break;
       case PlatformType.windows:
-        b = windowsBuilder?.getBuilder(device);
+        b = windowsDelegate?.getBuilder(device);
         break;
       case PlatformType.macOS:
-        b = macosBuilder?.getBuilder(device);
+        b = macosDelegate?.getBuilder(device);
         break;
       case PlatformType.linux:
-        b = linuxBuilder?.getBuilder(device);
+        b = linuxDelegate?.getBuilder(device);
         break;
     }
 
     return b?.call(context, device) ??
-        allOsBuilder?.getBuilder(device)?.call(context, device) ??
+        allOsDelegate?.getBuilder(device)?.call(context, device) ??
         builder.call(context, device);
   }
 }
