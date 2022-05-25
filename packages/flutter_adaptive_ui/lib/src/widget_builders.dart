@@ -13,8 +13,8 @@ abstract class AdaptiveLayoutDelegate {
   AdaptiveWidgetBuilder? getBuilder(DeviceConfig device);
 }
 
-class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
-  const AdaptiveLayoutDelegateWithWindowType(
+class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateWithScreenType(
     this.smallHandset,
     this.mediumHandset,
     this.largeHandset,
@@ -58,9 +58,9 @@ class AdaptiveLayoutDelegateWithWindowType implements AdaptiveLayoutDelegate {
   }
 }
 
-class AdaptiveLayoutDelegateWithMinimallWindowType
+class AdaptiveLayoutDelegateWithMinimallScreenType
     implements AdaptiveLayoutDelegate {
-  const AdaptiveLayoutDelegateWithMinimallWindowType(
+  const AdaptiveLayoutDelegateWithMinimallScreenType(
     this.handset,
     this.tablet,
     this.desktop,
@@ -89,8 +89,8 @@ class AdaptiveLayoutDelegateWithMinimallWindowType
   }
 }
 
-class AdaptiveLayoutDelegateWithWindowSize implements AdaptiveLayoutDelegate {
-  const AdaptiveLayoutDelegateWithWindowSize(
+class AdaptiveLayoutDelegateWithScreenSize implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateWithScreenSize(
     this.xSmall,
     this.small,
     this.medium,
