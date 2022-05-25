@@ -152,26 +152,26 @@ class AdaptiveBuilder extends StatelessWidget {
   const AdaptiveBuilder({
     super.key,
     required this.builder,
-    this.androidBuilder,
-    this.fuchsiaBuilder,
-    this.iosBuilder,
-    this.windowsBuilder,
-    this.macosBuilder,
-    this.linuxBuilder,
-    this.webBuilder,
-    this.allOsBuilder,
+    this.androidDelegate,
+    this.fuchsiaDelegate,
+    this.iosDelegate,
+    this.windowsDelegate,
+    this.macosDelegate,
+    this.linuxDelegate,
+    this.webDelegate,
+    this.allOsDelegate,
     this.breakpointData,
   });
 
   final AdaptiveWidgetBuilder builder;
-  final AdaptiveLayoutDelegate? androidBuilder;
-  final AdaptiveLayoutDelegate? fuchsiaBuilder;
-  final AdaptiveLayoutDelegate? iosBuilder;
-  final AdaptiveLayoutDelegate? windowsBuilder;
-  final AdaptiveLayoutDelegate? linuxBuilder;
-  final AdaptiveLayoutDelegate? macosBuilder;
-  final AdaptiveLayoutDelegate? webBuilder;
-  final AdaptiveLayoutDelegate? allOsBuilder;
+  final AdaptiveLayoutDelegate? androidDelegate;
+  final AdaptiveLayoutDelegate? fuchsiaDelegate;
+  final AdaptiveLayoutDelegate? iosDelegate;
+  final AdaptiveLayoutDelegate? windowsDelegate;
+  final AdaptiveLayoutDelegate? linuxDelegate;
+  final AdaptiveLayoutDelegate? macosDelegate;
+  final AdaptiveLayoutDelegate? webDelegate;
+  final AdaptiveLayoutDelegate? allOsDelegate;
   final BreakpointData? breakpointData;
 
   @override
