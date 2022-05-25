@@ -1,3 +1,9 @@
+## 0.3.0
+
+* Add BreakpointData.
+* Add Breakpoint (InheritedWidget).
+* Update DeviceConfig to use breakpoint.
+
 ## 0.2.0
 
 * Rename WindowType to ScreenType.
