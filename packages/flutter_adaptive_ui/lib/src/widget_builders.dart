@@ -160,6 +160,7 @@ class AdaptiveBuilder extends StatelessWidget {
     this.linuxBuilder,
     this.webBuilder,
     this.allOsBuilder,
+    this.breakpointData,
   });
 
   final AdaptiveWidgetBuilder builder;
@@ -171,10 +172,14 @@ class AdaptiveBuilder extends StatelessWidget {
   final AdaptiveLayoutDelegate? macosBuilder;
   final AdaptiveLayoutDelegate? webBuilder;
   final AdaptiveLayoutDelegate? allOsBuilder;
+  final BreakpointData? breakpointData;
 
   @override
   Widget build(BuildContext context) {
-    DeviceConfig device = DeviceConfig.fromMediaQuery(context);
+    DeviceConfig device = DeviceConfig.fromMediaQueryAndBreakpoint(
+      MediaQuery.of(context),
+      breakpointData ?? Breakpoint.of(context),
+    );
     AdaptiveWidgetBuilder? b;
 
     if (device.isWeb) {

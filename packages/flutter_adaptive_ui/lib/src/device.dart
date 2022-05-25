@@ -26,6 +26,18 @@ class DeviceConfig {
     }
   }
 
+  factory DeviceConfig.fromMediaQueryAndBreakpoint(
+    MediaQueryData mediaQueryData,
+    BreakpointData breakpointData,
+  ) {
+    final double screenWidth = mediaQueryData.size.width;
+
+    return DeviceConfig(
+      screenSize: breakpointData.getScreenSize(screenWidth),
+      screenType: breakpointData.getScreenType(screenWidth),
+    );
+  }
+
   /// xsmall , small , medium , large , xlarge
   final ScreenSize screenSize;
 
@@ -45,14 +57,4 @@ class DeviceConfig {
 
   /// Base on [kIsWeb]
   late final bool isWeb;
-
-  factory DeviceConfig.fromMediaQuery(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final BreakPointData breakPointData =
-        Breakpoint.meybeOf(context) ?? const BreakPointData.dftl();
-    return DeviceConfig(
-      screenSize: breakPointData.getScreenSize(screenWidth),
-      screenType: breakPointData.getScreenType(screenWidth),
-    );
-  }
 }
