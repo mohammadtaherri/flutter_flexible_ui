@@ -37,8 +37,8 @@ enum DesignLanguage {
 enum PlatformType {
   android('Android'),
   fuchsia('Fuchsia'),
-  ios('IOS'),
-  macos('MacOS'),
+  iOS('IOS'),
+  macOS('MacOS'),
   windows('Windows'),
   linux('Linux'),
   web('Web');
