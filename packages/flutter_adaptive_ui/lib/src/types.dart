@@ -22,8 +22,14 @@ enum ScreenType {
   largeDesktop('Large Desktop');
 
   const ScreenType([this.debugLabel]);
-
   final String? debugLabel;
 }
 
-enum DesignLanguage { material, cupertino, fluent }
+enum DesignLanguage {
+  material('Material'),
+  cupertino('Cupertino'),
+  fluent('Fluent');
+
+  const DesignLanguage([this.debugLabel]);
+  final String? debugLabel;
+}
