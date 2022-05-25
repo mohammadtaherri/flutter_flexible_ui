@@ -233,7 +233,8 @@ class Breakpoint extends InheritedWidget {
   /// Find the current [BreakPointData] in the widget tree.
   static BreakpointData of(BuildContext context) {
     final inherited = context.dependOnInheritedWidgetOfExactType<Breakpoint>();
-    assert(inherited != null, ''' 
+    assert(inherited != null,
+        ''' 
     No [Breakpoint] found in context.
 
     To use [Breakpoint], please add [Breakpoint] widget to the widget tree.
