@@ -1,6 +1,7 @@
-## 0.4.0
+## 1.0.0
 
 * Add some extension methods to BuildContext (breakpoint , mabybreakpoint)
+* Fix: Rename builder to delegate in AdaptiveBuilder fields
 * Doc: Add some documents.
 
 ## 0.4.0
