@@ -1,7 +1,7 @@
 part of flutter_adaptive_ui;
 
 abstract class BreakPointData {
-  const BreakPointData._();
+  const BreakPointData.constructor();
 
   const factory BreakPointData({
     required double small,
@@ -132,7 +132,7 @@ abstract class BreakPointData {
 }
 
 class _DefaultBreakpointData extends BreakPointData {
-  const _DefaultBreakpointData() : super._();
+  const _DefaultBreakpointData() : super.constructor();
 
   @override
   double get small => 600;
@@ -181,7 +181,7 @@ class _CustomBreakpointData extends BreakPointData {
     required this.smallDesktop,
     required this.mediumDesktop,
     required this.largeDesktop,
-  }) : super._();
+  }) : super.constructor();
 
   @override
   final double largeDesktop;
