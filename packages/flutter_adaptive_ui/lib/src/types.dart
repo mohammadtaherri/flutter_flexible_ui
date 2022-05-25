@@ -33,3 +33,16 @@ enum DesignLanguage {
   const DesignLanguage([this.debugLabel]);
   final String? debugLabel;
 }
+
+enum PlatformType {
+  android('Android'),
+  fuchsia('Fuchsia'),
+  ios('IOS'),
+  macos('MacOS'),
+  windows('Windows'),
+  linux('Linux'),
+  web('Web');
+
+  const PlatformType([this.debuglabel]);
+  final String? debuglabel;
+}
