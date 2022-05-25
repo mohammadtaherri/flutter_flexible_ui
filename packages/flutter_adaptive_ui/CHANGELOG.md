@@ -1,5 +1,8 @@
 ## 0.2.0
 
+* Rename WindowType to ScreenType.
+* Rename WindowSize to ScreenSize.
+
 ## 0.1.1+3
 
 * Doc: Add some documents.
