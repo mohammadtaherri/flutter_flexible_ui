@@ -2,7 +2,7 @@ part of flutter_adaptive_ui;
 
 class DeviceConfig {
   DeviceConfig({
-    required this.windowSize,
+    required this.screenSize,
     required this.windowType,
   }) {
     targetPlatform = defaultTargetPlatform;
@@ -27,7 +27,7 @@ class DeviceConfig {
   }
 
   /// xsmall , small , medium , large , xlarge
-  final WindowSize windowSize;
+  final ScreenSize screenSize;
 
   /// small handset , medium handset , large hanset
   /// small tablet , large tablet
@@ -54,49 +54,49 @@ class DeviceConfig {
     if (width >= 1920) {
       return DeviceConfig(
         windowType: WindowType.largeDesktop,
-        windowSize: WindowSize.xlarge,
+        screenSize: ScreenSize.xlarge,
       );
     }
     if (width >= 1440) {
       return DeviceConfig(
         windowType: WindowType.mediumDesktop,
-        windowSize: WindowSize.large,
+        screenSize: ScreenSize.large,
       );
     }
     if (width >= 1024) {
       return DeviceConfig(
         windowType: WindowType.smallDesktop,
-        windowSize: WindowSize.medium,
+        screenSize: ScreenSize.medium,
       );
     }
 
     if (width >= 720) {
       return DeviceConfig(
         windowType: WindowType.largeTablet,
-        windowSize: WindowSize.small,
+        screenSize: ScreenSize.small,
       );
     }
     if (width >= 600) {
       return DeviceConfig(
         windowType: WindowType.smallTablet,
-        windowSize: WindowSize.small,
+        screenSize: ScreenSize.small,
       );
     }
     if (width >= 400) {
       return DeviceConfig(
         windowType: WindowType.largeHandset,
-        windowSize: WindowSize.xsmall,
+        screenSize: ScreenSize.xsmall,
       );
     }
     if (width >= 360) {
       return DeviceConfig(
         windowType: WindowType.mediumHandset,
-        windowSize: WindowSize.xsmall,
+        screenSize: ScreenSize.xsmall,
       );
     }
     return DeviceConfig(
       windowType: WindowType.smallHandset,
-      windowSize: WindowSize.xsmall,
+      screenSize: ScreenSize.xsmall,
     );
   }
 }

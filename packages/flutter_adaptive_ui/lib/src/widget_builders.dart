@@ -107,16 +107,16 @@ class AdaptiveLayoutDelegateWithWindowSize implements AdaptiveLayoutDelegate {
   @override
   @protected
   AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
-    switch (device.windowSize) {
-      case WindowSize.xsmall:
+    switch (device.screenSize) {
+      case ScreenSize.xsmall:
         return xSmall;
-      case WindowSize.small:
+      case ScreenSize.small:
         return small;
-      case WindowSize.medium:
+      case ScreenSize.medium:
         return medium;
-      case WindowSize.large:
+      case ScreenSize.large:
         return large;
-      case WindowSize.xlarge:
+      case ScreenSize.xlarge:
         return xLarge;
     }
   }
