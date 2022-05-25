@@ -1,9 +1,9 @@
 part of flutter_adaptive_ui;
 
-abstract class BreakPointData {
-  const BreakPointData.constructor();
+abstract class BreakpointData {
+  const BreakpointData.constructor();
 
-  const factory BreakPointData({
+  const factory BreakpointData({
     required double small,
     required double medium,
     required double large,
@@ -17,7 +17,7 @@ abstract class BreakPointData {
     required double largeDesktop,
   }) = _CustomBreakpointData;
 
-  const factory BreakPointData.dftl() = _DefaultBreakpointData;
+  const factory BreakpointData.dftl() = _DefaultBreakpointData;
 
   double get small;
   double get medium;
@@ -53,7 +53,7 @@ abstract class BreakPointData {
     return ScreenType.smallHandset;
   }
 
-  BreakPointData copyWith({
+  BreakpointData copyWith({
     double? small,
     double? medium,
     double? large,
@@ -66,7 +66,7 @@ abstract class BreakPointData {
     double? mediumDesktop,
     double? largeDesktop,
   }) =>
-      BreakPointData(
+      BreakpointData(
         small: small ?? this.small,
         medium: medium ?? this.medium,
         large: large ?? this.large,
@@ -82,7 +82,7 @@ abstract class BreakPointData {
 
   @override
   bool operator ==(Object other) {
-    if (other is! BreakPointData) return false;
+    if (other is! BreakpointData) return false;
     if (identical(this, other)) return true;
 
     if (small != other.small) return false;
@@ -131,7 +131,7 @@ abstract class BreakPointData {
   }
 }
 
-class _DefaultBreakpointData extends BreakPointData {
+class _DefaultBreakpointData extends BreakpointData {
   const _DefaultBreakpointData() : super.constructor();
 
   @override
@@ -168,7 +168,7 @@ class _DefaultBreakpointData extends BreakPointData {
   double get largeDesktop => defaultMinLargeDesktopScreenWidth;
 }
 
-class _CustomBreakpointData extends BreakPointData {
+class _CustomBreakpointData extends BreakpointData {
   const _CustomBreakpointData({
     required this.small,
     required this.medium,
@@ -220,23 +220,23 @@ class _CustomBreakpointData extends BreakPointData {
 class Breakpoint extends InheritedWidget {
   const Breakpoint({
     super.key,
-    this.breakPointData = const BreakPointData.dftl(),
+    this.breakPointData = const BreakpointData.dftl(),
     required super.child,
   });
-  final BreakPointData breakPointData;
+  final BreakpointData breakPointData;
 
   @override
   bool updateShouldNotify(covariant Breakpoint oldWidget) {
     return oldWidget.breakPointData != breakPointData;
   }
 
-  static BreakPointData of(BuildContext context) {
+  static BreakpointData of(BuildContext context) {
     return context
         .dependOnInheritedWidgetOfExactType<Breakpoint>()!
         .breakPointData;
   }
 
-  static BreakPointData? meybeOf(BuildContext context) {
+  static BreakpointData? meybeOf(BuildContext context) {
     return context
         .dependOnInheritedWidgetOfExactType<Breakpoint>()
         ?.breakPointData;
