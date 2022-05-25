@@ -1,8 +1,11 @@
 ## 1.0.0
 
+* Publish stable version
 * Add some extension methods to BuildContext (breakpoint , mabybreakpoint)
 * Fix: Rename builder to delegate in AdaptiveBuilder fields
+* Fix: Change AdaptiveLayoutDelegates fields to name params.
 * Doc: Add some documents.
+* Add README
 
 ## 0.4.0
 
