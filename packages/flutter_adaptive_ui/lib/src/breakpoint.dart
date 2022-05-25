@@ -1,11 +1,11 @@
 part of flutter_adaptive_ui;
 
-abstract class BreakPoint {
-  BreakPoint._() {
+abstract class BreakPointData {
+  BreakPointData._() {
     debugAssertIsValid();
   }
 
-  factory BreakPoint({
+  factory BreakPointData({
     required double small,
     required double medium,
     required double large,
@@ -17,9 +17,9 @@ abstract class BreakPoint {
     required double smallDesktop,
     required double mediumDesktop,
     required double largeDesktop,
-  }) = _CustomBreakpoint;
+  }) = _CustomBreakpointData;
 
-  factory BreakPoint.dftl() = _DefaultBreakpoint;
+  factory BreakPointData.dftl() = _DefaultBreakpointData;
 
   double get small;
   double get medium;
@@ -53,7 +53,7 @@ abstract class BreakPoint {
     return ScreenType.smallHandset;
   }
 
-  BreakPoint copyWith({
+  BreakPointData copyWith({
     double? small,
     double? medium,
     double? large,
@@ -66,7 +66,7 @@ abstract class BreakPoint {
     double? mediumDesktop,
     double? largeDesktop,
   }) =>
-      BreakPoint(
+      BreakPointData(
         small: small ?? this.small,
         medium: medium ?? this.medium,
         large: large ?? this.large,
@@ -98,8 +98,8 @@ abstract class BreakPoint {
   }
 }
 
-class _DefaultBreakpoint extends BreakPoint {
-  _DefaultBreakpoint() : super._();
+class _DefaultBreakpointData extends BreakPointData {
+  _DefaultBreakpointData() : super._();
 
   @override
   double get small => 600;
@@ -135,8 +135,8 @@ class _DefaultBreakpoint extends BreakPoint {
   double get largeDesktop => 1920;
 }
 
-class _CustomBreakpoint extends BreakPoint {
-  _CustomBreakpoint({
+class _CustomBreakpointData extends BreakPointData {
+  _CustomBreakpointData({
     required this.small,
     required this.medium,
     required this.large,
