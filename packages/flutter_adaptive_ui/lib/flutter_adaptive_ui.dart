@@ -3,6 +3,7 @@ library flutter_adaptive_ui;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+part './src/constants.dart';
 part './src/types.dart';
 part './src/device.dart';
 part './src/breakpoint.dart';

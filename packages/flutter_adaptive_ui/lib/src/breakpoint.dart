@@ -135,37 +135,37 @@ class _DefaultBreakpointData extends BreakPointData {
   const _DefaultBreakpointData() : super.constructor();
 
   @override
-  double get small => 600;
+  double get small => defaultMinSmallScreenWidth;
 
   @override
-  double get medium => 1024;
+  double get medium => defaultMinMediumScreenWidth;
 
   @override
-  double get large => 1440;
+  double get large => defaultMinLargeScreenWidth;
 
   @override
-  double get xlarge => 1920;
+  double get xlarge => defaultMinXLargeScreenWidth;
 
   @override
-  double get mediumHandset => 360;
+  double get mediumHandset => defaultMinMediumhandsetScreenWidth;
 
   @override
-  double get largeHandset => 400;
+  double get largeHandset => defaultMinLargehandsetScreenWidth;
 
   @override
-  double get smallTablet => 600;
+  double get smallTablet => defaultMinSmallTabletScreenWidth;
 
   @override
-  double get largeTablet => 720;
+  double get largeTablet => defaultMinLargeTabletScreenWidth;
 
   @override
-  double get smallDesktop => 1024;
+  double get smallDesktop => defaultMinSmallDesktopScreenWidth;
 
   @override
-  double get mediumDesktop => 1440;
+  double get mediumDesktop => defaultMinMediumDesktopScreenWidth;
 
   @override
-  double get largeDesktop => 1920;
+  double get largeDesktop => defaultMinLargeDesktopScreenWidth;
 }
 
 class _CustomBreakpointData extends BreakPointData {
