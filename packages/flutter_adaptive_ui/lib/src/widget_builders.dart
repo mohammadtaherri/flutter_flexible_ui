@@ -178,9 +178,7 @@ class AdaptiveBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     DeviceConfig device = DeviceConfig.fromMediaQueryAndBreakpoint(
       MediaQuery.of(context),
-      breakpointData ??
-          Breakpoint.maybeOf(context) ??
-          const BreakpointData.dftl(),
+      breakpointData ?? Breakpoint.of(context) ?? const BreakpointData(),
     );
     AdaptiveWidgetBuilder? b;
 

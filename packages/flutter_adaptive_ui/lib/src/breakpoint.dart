@@ -1,36 +1,32 @@
 part of flutter_adaptive_ui;
 
-abstract class BreakpointData {
-  const BreakpointData.constructor();
+class BreakpointData {
+  const BreakpointData({
+    this.small = defaultMinSmallScreenWidth,
+    this.medium = defaultMinMediumScreenWidth,
+    this.large = defaultMinLargeScreenWidth,
+    this.xlarge = defaultMinXLargeScreenWidth,
+    this.mediumHandset = defaultMinMediumHandsetScreenWidth,
+    this.largeHandset = defaultMinLargeHandsetScreenWidth,
+    this.smallTablet = defaultMinSmallTabletScreenWidth,
+    this.largeTablet = defaultMinLargeTabletScreenWidth,
+    this.smallDesktop = defaultMinSmallDesktopScreenWidth,
+    this.mediumDesktop = defaultMinMediumDesktopScreenWidth,
+    this.largeDesktop = defaultMinLargeDesktopScreenWidth,
+  });
 
-  const factory BreakpointData({
-    required double small,
-    required double medium,
-    required double large,
-    required double xlarge,
-    required double mediumHandset,
-    required double largeHandset,
-    required double smallTablet,
-    required double largeTablet,
-    required double smallDesktop,
-    required double mediumDesktop,
-    required double largeDesktop,
-  }) = _CustomBreakpointData;
+  final double small;
+  final double medium;
+  final double large;
+  final double xlarge;
 
-  const factory BreakpointData.dftl() = _DefaultBreakpointData;
-
-  double get small;
-  double get medium;
-  double get large;
-  double get xlarge;
-
-  double get mediumHandset;
-  double get largeHandset;
-  double get smallTablet;
-  double get largeTablet;
-  double get smallDesktop;
-  double get mediumDesktop;
-  double get largeDesktop;
+  final double smallDesktop;
+  final double mediumHandset;
+  final double largeHandset;
+  final double smallTablet;
+  final double largeTablet;
+  final double mediumDesktop;
+  final double largeDesktop;
 
   ScreenSize getScreenSize(double widht) {
     debugAssertIsValid();
@@ -131,96 +127,10 @@ abstract class BreakpointData {
   }
 }
 
-class _DefaultBreakpointData extends BreakpointData {
-  const _DefaultBreakpointData() : super.constructor();
-
-  @override
-  double get small => defaultMinSmallScreenWidth;
-
-  @override
-  double get medium => defaultMinMediumScreenWidth;
-
-  @override
-  double get large => defaultMinLargeScreenWidth;
-
-  @override
-  double get xlarge => defaultMinXLargeScreenWidth;
-
-  @override
-  double get mediumHandset => defaultMinMediumhandsetScreenWidth;
-
-  @override
-  double get largeHandset => defaultMinLargehandsetScreenWidth;
-
-  @override
-  double get smallTablet => defaultMinSmallTabletScreenWidth;
-
-  @override
-  double get largeTablet => defaultMinLargeTabletScreenWidth;
-
-  @override
-  double get smallDesktop => defaultMinSmallDesktopScreenWidth;
-
-  @override
-  double get mediumDesktop => defaultMinMediumDesktopScreenWidth;
-
-  @override
-  double get largeDesktop => defaultMinLargeDesktopScreenWidth;
-}
-
-class _CustomBreakpointData extends BreakpointData {
-  const _CustomBreakpointData({
-    required this.small,
-    required this.medium,
-    required this.large,
-    required this.xlarge,
-    required this.mediumHandset,
-    required this.largeHandset,
-    required this.smallTablet,
-    required this.largeTablet,
-    required this.smallDesktop,
-    required this.mediumDesktop,
-    required this.largeDesktop,
-  }) : super.constructor();
-
-  @override
-  final double largeDesktop;
-
-  @override
-  final double largeHandset;
-
-  @override
-  final double largeTablet;
-
-  @override
-  final double medium;
-
-  @override
-  final double mediumDesktop;
-
-  @override
-  final double mediumHandset;
-
-  @override
-  final double small;
-
-  @override
-  final double smallDesktop;
-
-  @override
-  final double smallTablet;
-
-  @override
-  final double xlarge;
-
-  @override
-  final double large;
-}
-
 class Breakpoint extends InheritedWidget {
   const Breakpoint({
     super.key,
-    this.breakPointData = const BreakpointData.dftl(),
+    this.breakPointData = const BreakpointData(),
     required super.child,
   });
   final BreakpointData breakPointData;
@@ -231,26 +141,7 @@ class Breakpoint extends InheritedWidget {
   }
 
   /// Find the current [BreakPointData] in the widget tree.
-  static BreakpointData of(BuildContext context) {
-    final inherited = context.dependOnInheritedWidgetOfExactType<Breakpoint>();
-    assert(inherited != null,
-        ''' 
-    No [Breakpoint] found in context.
-
-    To use [Breakpoint], please add [Breakpoint] widget to the widget tree.
-
-    Widget build(BuildContext context) {
-      return const Breakpoint(
-        child: MaterialApp(),
-      );
-    }
-  ''');
-    return inherited!.breakPointData;
-  }
-
-  /// Find the current [BreakPointData] in the widget tree.
-  /// If there is no [Breakpoint], return null.
-  static BreakpointData? maybeOf(BuildContext context) {
+  static BreakpointData? of(BuildContext context) {
     return context
         .dependOnInheritedWidgetOfExactType<Breakpoint>()
         ?.breakPointData;
