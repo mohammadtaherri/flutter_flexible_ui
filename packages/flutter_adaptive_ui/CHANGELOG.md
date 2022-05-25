@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Update AdaptiveBuilder: get breakpointData in constructor.
+
 ## 0.3.0
 
 * Add BreakpointData.
