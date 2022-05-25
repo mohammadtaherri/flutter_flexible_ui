@@ -34,7 +34,7 @@ By default **_Screen Size_** and **reen Type_** obtain from following table:
 | -------------------| ------------- | ------------- |
 | 0-359              | X Small       | Small Handset |
 | 360-399            | X Small       | Medium Handset|
-| 400-599            | X Small       | Large handset |
+| 400-599            | X Small       | Large Handset |
 | 600-719            | Small         | Small Tablet  |
 | 720-1023           | Small         | Large Tablet  |
 | 1023-1439          | Medium        | Small Desktop |
@@ -50,4 +50,4 @@ And **_Design language_** :
 | Android - Fuchsia  | Material        | 
 | IOS - MacOs        | Cupertino       |
 | Windows            | Fluent          |
-| Other              | Material        | 
+| Others             | Material        | 
