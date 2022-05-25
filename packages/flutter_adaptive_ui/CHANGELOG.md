@@ -1,3 +1,12 @@
+## 0.5.0
+
+* Rename DeviceConfig to Screen
+* Add mediaQUeryData , breakpointData and layoutConstraints to Screen
+* Obtain ScreenType and ScreenSize base on layoutConstraint and then media query
+* Wrap AdaptiveBuilder result in LayoutBuilder
+* Remove maybeOf from Breakpoint
+* Add of(context) method to Screen
+
 ## 0.4.0+1
 
 * Add some extension methods to BuildContext (breakpoint , mabybreakpoint)
