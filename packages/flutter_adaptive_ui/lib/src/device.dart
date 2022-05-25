@@ -47,56 +47,12 @@ class DeviceConfig {
   late final bool isWeb;
 
   factory DeviceConfig.fromMediaQuery(BuildContext context) {
-    return _calc(MediaQuery.of(context).size.width);
-  }
-
-  static DeviceConfig _calc(double width) {
-    if (width >= 1920) {
-      return DeviceConfig(
-        screenType: ScreenType.largeDesktop,
-        screenSize: ScreenSize.xlarge,
-      );
-    }
-    if (width >= 1440) {
-      return DeviceConfig(
-        screenType: ScreenType.mediumDesktop,
-        screenSize: ScreenSize.large,
-      );
-    }
-    if (width >= 1024) {
-      return DeviceConfig(
-        screenType: ScreenType.smallDesktop,
-        screenSize: ScreenSize.medium,
-      );
-    }
-
-    if (width >= 720) {
-      return DeviceConfig(
-        screenType: ScreenType.largeTablet,
-        screenSize: ScreenSize.small,
-      );
-    }
-    if (width >= 600) {
-      return DeviceConfig(
-        screenType: ScreenType.smallTablet,
-        screenSize: ScreenSize.small,
-      );
-    }
-    if (width >= 400) {
-      return DeviceConfig(
-        screenType: ScreenType.largeHandset,
-        screenSize: ScreenSize.xsmall,
-      );
-    }
-    if (width >= 360) {
-      return DeviceConfig(
-        screenType: ScreenType.mediumHandset,
-        screenSize: ScreenSize.xsmall,
-      );
-    }
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final BreakPointData breakPointData =
+        Breakpoint.meybeOf(context) ?? const BreakPointData.dftl();
     return DeviceConfig(
-      screenType: ScreenType.smallHandset,
-      screenSize: ScreenSize.xsmall,
+      screenSize: breakPointData.getScreenSize(screenWidth),
+      screenType: breakPointData.getScreenType(screenWidth),
     );
   }
 }

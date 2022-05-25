@@ -230,13 +230,13 @@ class Breakpoint extends InheritedWidget {
     return oldWidget.breakPointData != breakPointData;
   }
 
-  BreakPointData of(BuildContext context) {
+  static BreakPointData of(BuildContext context) {
     return context
         .dependOnInheritedWidgetOfExactType<Breakpoint>()!
         .breakPointData;
   }
 
-  BreakPointData? meybeOf(BuildContext context) {
+  static BreakPointData? meybeOf(BuildContext context) {
     return context
         .dependOnInheritedWidgetOfExactType<Breakpoint>()
         ?.breakPointData;
