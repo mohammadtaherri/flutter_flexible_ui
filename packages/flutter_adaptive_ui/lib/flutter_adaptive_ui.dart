@@ -9,3 +9,4 @@ part './src/types.dart';
 part './src/device.dart';
 part './src/breakpoint.dart';
 part './src/widget_builders.dart';
+part './src/extensions.dart';
