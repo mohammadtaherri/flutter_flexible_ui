@@ -2,7 +2,7 @@ part of flutter_adaptive_ui;
 
 /// The signature of the [AdaptiveBuilder] builder function.
 typedef AdaptiveWidgetBuilder = Widget Function(
-    BuildContext context, DeviceConfig device);
+    BuildContext context, Screen screen);
 
 abstract class AdaptiveLayoutDelegate {
   /// Abstract const constructor. This constructor enables subclasses to provide
@@ -10,7 +10,7 @@ abstract class AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegate._();
 
   @protected
-  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device);
+  AdaptiveWidgetBuilder? getBuilder(Screen screen);
 }
 
 class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
@@ -36,8 +36,8 @@ class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
 
   @override
   @protected
-  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
-    switch (device.screenType) {
+  AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    switch (screen.screenType) {
       case ScreenType.smallHandset:
         return smallHandset;
       case ScreenType.mediumHandset:
@@ -72,8 +72,8 @@ class AdaptiveLayoutDelegateWithMinimallScreenType
 
   @override
   @protected
-  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
-    switch (device.screenType) {
+  AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    switch (screen.screenType) {
       case ScreenType.smallHandset:
       case ScreenType.mediumHandset:
       case ScreenType.largeHandset:
@@ -106,8 +106,8 @@ class AdaptiveLayoutDelegateWithScreenSize implements AdaptiveLayoutDelegate {
 
   @override
   @protected
-  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
-    switch (device.screenSize) {
+  AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    switch (screen.screenSize) {
       case ScreenSize.xsmall:
         return xSmall;
       case ScreenSize.small:
@@ -136,8 +136,8 @@ class AdaptiveLayoutDelegateWithDesignLanguage
 
   @override
   @protected
-  AdaptiveWidgetBuilder? getBuilder(DeviceConfig device) {
-    switch (device.designLanguage) {
+  AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    switch (screen.designLanguage) {
       case DesignLanguage.material:
         return material;
       case DesignLanguage.cupertino:
@@ -176,38 +176,38 @@ class AdaptiveBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DeviceConfig device = DeviceConfig.fromMediaQueryAndBreakpoint(
+    Screen screen = Screen.fromMediaQueryAndBreakpoint(
       MediaQuery.of(context),
       breakpointData ?? Breakpoint.of(context) ?? const BreakpointData(),
     );
     AdaptiveWidgetBuilder? b;
 
-    switch (device.platform) {
+    switch (screen.platform) {
       case PlatformType.web:
-        b = webDelegate?.getBuilder(device);
+        b = webDelegate?.getBuilder(screen);
         break;
       case PlatformType.android:
-        b = androidDelegate?.getBuilder(device);
+        b = androidDelegate?.getBuilder(screen);
         break;
       case PlatformType.fuchsia:
-        b = fuchsiaDelegate?.getBuilder(device);
+        b = fuchsiaDelegate?.getBuilder(screen);
         break;
       case PlatformType.iOS:
-        b = iosDelegate?.getBuilder(device);
+        b = iosDelegate?.getBuilder(screen);
         break;
       case PlatformType.windows:
-        b = windowsDelegate?.getBuilder(device);
+        b = windowsDelegate?.getBuilder(screen);
         break;
       case PlatformType.macOS:
-        b = macosDelegate?.getBuilder(device);
+        b = macosDelegate?.getBuilder(screen);
         break;
       case PlatformType.linux:
-        b = linuxDelegate?.getBuilder(device);
+        b = linuxDelegate?.getBuilder(screen);
         break;
     }
 
-    return b?.call(context, device) ??
-        allOsDelegate?.getBuilder(device)?.call(context, device) ??
-        builder.call(context, device);
+    return b?.call(context, screen) ??
+        allOsDelegate?.getBuilder(screen)?.call(context, screen) ??
+        builder.call(context, screen);
   }
 }

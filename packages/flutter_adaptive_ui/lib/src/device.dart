@@ -1,7 +1,7 @@
 part of flutter_adaptive_ui;
 
-class DeviceConfig {
-  DeviceConfig({
+class Screen {
+  Screen({
     required this.screenSize,
     required this.screenType,
   }) {
@@ -9,13 +9,13 @@ class DeviceConfig {
     designLanguage = getDefaultDesignLanguage();
   }
 
-  factory DeviceConfig.fromMediaQueryAndBreakpoint(
+  factory Screen.fromMediaQueryAndBreakpoint(
     MediaQueryData mediaQueryData,
     BreakpointData breakpointData,
   ) {
     final double screenWidth = mediaQueryData.size.width;
 
-    return DeviceConfig(
+    return Screen(
       screenSize: breakpointData.getScreenSize(screenWidth),
       screenType: breakpointData.getScreenType(screenWidth),
     );
