@@ -1,6 +1,9 @@
 ## 0.4.0
 
 * Update AdaptiveBuilder: get breakpointData in constructor.
+* Add PlatformType (enum).
+* Add getDefaultPlatform top level function.
+* Add getDefaultDesignLanguage top level function.
 
 ## 0.3.0
 
