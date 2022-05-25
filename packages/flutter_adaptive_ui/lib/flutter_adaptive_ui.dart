@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 part './src/constants.dart';
 part './src/utils.dart';
 part './src/types.dart';
-part './src/device.dart';
+part 'src/screen.dart';
 part './src/breakpoint.dart';
 part './src/widget_builders.dart';
 part './src/extensions.dart';
