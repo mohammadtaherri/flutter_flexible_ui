@@ -183,3 +183,29 @@ class _CustomBreakpointData extends BreakPointData {
   @override
   final double large;
 }
+
+class Breakpoint extends InheritedWidget {
+  const Breakpoint({
+    super.key,
+    this.breakPointData,
+    required super.child,
+  });
+  final BreakPointData? breakPointData;
+
+  @override
+  bool updateShouldNotify(covariant Breakpoint oldWidget) {
+    return true;
+  }
+
+  BreakPointData of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<Breakpoint>()!
+        .breakPointData!;
+  }
+
+  BreakPointData? meybeOf(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<Breakpoint>()
+        ?.breakPointData;
+  }
+}
