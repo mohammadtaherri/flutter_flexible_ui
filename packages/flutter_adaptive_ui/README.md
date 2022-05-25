@@ -28,7 +28,7 @@ This package uses **_Screen Size_** , **_Screen Type_** and **_Design language_*
 * Cupertino
 * Fluent
 
-By default **_Screen Size_** and **reen Type_** obtain from following table:
+By default **_Screen Size_** and **_SCreen Type_** obtain from following table:
 
 | Screen Width Range | Screen Size   | Screen Type   |
 | -------------------| ------------- | ------------- |
