@@ -182,7 +182,7 @@ This widget accepts following params:
 
 - **breakpointData**
 
-This Widget obtains `BreakpointData` base on following rules:
+This Widget obtains `BreakpointData` based on following rules:
 
 1. `breakpointData` param that is passed to constructor.
 2. If `breakpointData` param is null(no param is passed to constructor), It will obtain `breakpointData` from nearest `Breakpoint` (InheritedWidget) in widget tree.
@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-
+- **builder**
 - **androidDelegate**
 - **fuchsiaDelegate**
 - **iosDelegate**
@@ -256,11 +256,23 @@ class _HomePageState extends State<HomePage> {
 - **macosDelegate**
 - **linuxDelegate**
 - **webDelegate**
+- **allPlatformsDelegate**
 
-All this params are optional.
+First of all, this widget obtains **ScreenSize** , **ScreenType** and **Designlanguage** and then builds UI based on following rules:
 
-Use this params to build your screen base on **_Operating System_**.
+1. **PlatformType**
 
-You must pass an object of `AdaptiveLayoutDelegate`.This class is an abstract class and you can use custom implementations.
+PlatformType is _android_ , _fuchsia_ , _iOS_ , _windows_ , _linux_ , _macOS_ or _web .
 
-* **AdaptiveLayoutDelegateWithScreenType**
+First of all, this widget uses a custom delegate based on **PaltformType** (androidDelegate , fuchsiaDelegate , iosDelegate , windowsDelegate , macOSDelegate , linuxDelegate or webDelegate) to building UI.
+
+2. **allPlatformDelagate**
+
+If a custom delegate is not provided or custom delegate is provided but it does not provide a custom builder for the desired size, It will use **allPlatformDelegate** for building UI.
+
+3. **builder**
+
+Eventually, If for the desired platform is not provided a custom delegate or the custom delegate does not provide a custom builder for the desired size 
+and **allPlatformDelegate** also does not provide that builder ,it will use the builder param for building UI.
+
+
