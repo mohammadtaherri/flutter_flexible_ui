@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       windowsDelegate: _getWindowsDelegate(),
       linuxDelegate: _getLinuxDelegate(),
       webDelegate: _getWebDelegate(),
-      allPlatformsDelegate: _getAllOSDelegate(),
+      allPlatformsDelegate: _getAlllatformsDelegate(),
     );
   }
 
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  AdaptiveLayoutDelegate? _getAllOSDelegate() {
+  AdaptiveLayoutDelegate? _getAlllatformsDelegate() {
     return AdaptiveLayoutDelegateWithScreenSize(
       xSmall: (BuildContext context, Screen screen) {
         return const Center(
@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage> {
       },
       xLarge: (BuildContext context, Screen screen) {
         return const Center(
-          child: Text('All OS - X large'),
+          child: Text('All Platforms - X large'),
         );
       },
     );
