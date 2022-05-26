@@ -30,7 +30,7 @@ This package uses **_Screen Size_** , **_Screen Type_** and **_Design language_*
 * Cupertino
 * Fluent
 
-By default **_Screen Size_** and **_SCreen Type_** obtain from following table:
+By default **_Screen Size_** and **_SCreen Type_** are obtained from following table:
 
 | Screen Width Range | Screen Size   | Screen Type   |
 | -------------------| ------------- | ------------- |
@@ -55,7 +55,7 @@ And **_Design language_** :
 | Others             | Material        | 
 
 
-You can change these default sizes by wrap your `MaterialApp` in `Breakpoint`:
+You can change these default sizes by wrapping your `MaterialApp` in `Breakpoint`:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-Now you can override these default sizes by set `breakpointData` param:
+Now you can override the default sizes by set `breakpointData` param:
 
 
 ```dart
@@ -186,10 +186,10 @@ This Widget obtains `BreakpointData` based on following rules:
 
 1. `breakpointData` param that is passed to constructor.
 2. If `breakpointData` param is null(no param is passed to constructor), It will obtain `breakpointData` from nearest `Breakpoint` (InheritedWidget) in widget tree.
-3. If there is no `Breakpoint` in widget tree above this widget, it will use default sizes.
+3. If there is no `Breakpoint` in widget tree above this widget, it will use the default sizes.
 
 
-Use this param to override default sizes or sizes that obtain from nearest `Breakpoint`:
+Use this param to override the default sizes:
 
 1. Use `Breakpoint.of(context)` to obtain `breakpointData` from nearest `Breakpoint` and then override sizes by calling `copyWith()` method:
 ```dart
@@ -268,12 +268,12 @@ First of all, this widget uses a custom delegate based on **PaltformType** (andr
 
 2. **allPlatformDelagate**
 
-If a custom delegate is not provided or custom delegate is provided but it does not provide a custom builder for the desired size, It will use **allPlatformDelegate** for building UI.
+If a custom delegate is not provided or the custom delegate is provided but it does not provide a custom builder for the desired size, It will use the **allPlatformDelegate** for building UI.
 
 3. **builder**
 
 Eventually, If for the desired platform is not provided a custom delegate or the custom delegate does not provide a custom builder for the desired size 
-and **allPlatformDelegate** also does not provide that builder ,it will use the builder param for building UI.
+and the **allPlatformDelegate** also does not provide that builder ,it will use the builder param for building UI.
 
 
 - **builder**
@@ -303,7 +303,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 ```
- **Screen** is an object that gives you some informations from screen.
+ **Screen** is an object that gives you some informations from the screen.
  
 | Param                 | Type                  |   Definition    |
 | ----------------------| --------------------- | ----------------|
