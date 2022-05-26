@@ -4,7 +4,7 @@ part of flutter_adaptive_ui;
 /// the [TargetPlatform] and the [kIsWeb].
 ///
 /// If the [kIsWeb] is true, it will be web.
-/// If the [kIsWeb] is false, it will be obtained based on [TargetPlatform].
+/// If the [kIsWeb] is false, it will be obtained based on the [TargetPlatform].
 ///
 /// See also:
 ///
