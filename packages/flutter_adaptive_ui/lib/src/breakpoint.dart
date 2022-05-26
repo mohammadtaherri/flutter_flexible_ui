@@ -15,17 +15,37 @@ class BreakpointData {
     this.largeDesktop = defaultMinLargeDesktopScreenWidth,
   });
 
+  /// The minimum screen width of Small window
   final double small;
+
+  /// The minimum screen width of Medium window
   final double medium;
+
+  /// The minimum screen width of Large window
   final double large;
+
+  /// The minimum screen width of X Large window
   final double xlarge;
 
-  final double smallDesktop;
+  /// The minimum screen width of Medium Handset
   final double mediumHandset;
+
+  /// The minimum screen width of Large Handset
   final double largeHandset;
+
+  /// The minimum screen width of Small Tablet
   final double smallTablet;
+
+  /// The minimum screen width of Large Tablet
   final double largeTablet;
+
+  /// The minimum screen width of Small Desktop
+  final double smallDesktop;
+
+  /// The minimum screen width of Medium Desktop
   final double mediumDesktop;
+
+  /// The minimum screen width of Large Desktop
   final double largeDesktop;
 
   ScreenSize _getScreenSize(double widht) {
@@ -127,6 +147,57 @@ class BreakpointData {
   }
 }
 
+/// Applies a [BreakpointData] to descendant widgets.
+///
+/// Descendant widgets obtain the current [BreakpointData] object using
+/// [Breakpoint.of]. When a widget uses [Breakpoint.of], it is automatically rebuilt if
+/// the [BreakpointData] later changes, so that the changes can be applied.
+///
+/// Typical usage is as follows:
+///
+/// ```dart
+/// main() {
+///  runApp(const MyApp());
+/// }
+///
+/// class MyApp extends StatelessWidget {
+///  const MyApp({Key? key}) : super(key: key);
+///
+///  @override
+///  Widget build(BuildContext context) {
+///    return const Breakpoint(
+///      // Use default sizes or override.
+///      breakPointData: BreakpointData(
+///        // Base on [ScreenSize] (xSmall , small , medium , large , xLarge)
+///        small: 600,
+///        medium: 1024,
+///        large: 1440,
+///        xlarge: 1920,
+///        // Base on [ScreenType] (smallHandset , mediumHandset , largeHandset , smallTablet , largetablet , smallDesktop , mediumDesktop , largeDesktop)
+///        mediumHandset: 360,
+///        largeHandset: 400,
+///        smallTablet: 600,
+///        largeTablet: 720,
+///        smallDesktop: 1024,
+///        mediumDesktop: 1440,
+///        largeDesktop: 1920,
+///      ),
+///      child: MaterialApp(
+///        home: HomePage(),
+///      ),
+///    );
+///  }
+/// }
+/// ```
+///
+/// See also:
+///
+///  * [AdaptiveBuilder]
+///  * [AdaptiveLayoutDelegate]
+///  * [BreakpointData]
+///  * [Screen]
+///  * [MaterialApp]
+///  * [WidgetsApp]
 class Breakpoint extends InheritedWidget {
   const Breakpoint({
     super.key,
@@ -140,7 +211,8 @@ class Breakpoint extends InheritedWidget {
     return oldWidget.breakPointData != breakPointData;
   }
 
-  /// Find the current [BreakPointData] in the widget tree.
+  /// The [breakPointData] from the closest [Breakpoint] instance that encloses the given
+  /// context.
   static BreakpointData? of(BuildContext context) {
     return context
         .dependOnInheritedWidgetOfExactType<Breakpoint>()
