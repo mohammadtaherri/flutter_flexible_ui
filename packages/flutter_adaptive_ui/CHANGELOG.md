@@ -1,3 +1,8 @@
+## 0.5.1+2
+
+* Doc: Add some documents.
+* Update README
+
 ## 0.5.1+1
 
 ## 0.5.1
