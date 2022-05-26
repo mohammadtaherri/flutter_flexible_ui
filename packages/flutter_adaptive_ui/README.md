@@ -321,9 +321,11 @@ All these params are **optional**.
 
 You must pass a `AdaptiveLayoutDelegate`.this class is an abstract class and you can use following implementations or create your custom implementation from scratch:
 
-1. AdaptiveLayoutDelegateWithScreenType
+#### AdaptiveLayoutDelegateWithScreenType
 
-This delegate builds layout based on **ScreenType** (smallHandset , mediumhandset , largeHandset , smallTablet , largeTablet , smallDesktop , mediumDesktop , largeDesktop).
+  This delegate builds layout based on **ScreenType** (smallHandset , mediumhandset , largeHandset , smallTablet , largeTablet , smallDesktop ,       mediumDesktop , largeDesktop).
+
+  All params are **optional**.
 
 <details><summary>Example</summary>
 
@@ -392,13 +394,11 @@ class _HomePageState extends State<HomePage> {
 ```
 
 </details>
-  
-All params are **optional**.
 
 
-2. AdaptiveLayoutDelegateWithMinimallScreenType
+#### AdaptiveLayoutDelegateWithMinimallScreenType
   
-  This delegate builds layout based on minimall **ScreenType** (handset , tablet , desktop);
+   This delegate builds layout based on minimall **ScreenType** (handset , tablet , desktop);
   
   <details><summary>Example</summary>
 
@@ -442,12 +442,10 @@ class _HomePageState extends State<HomePage> {
 ```
 
 </details>
-  
-All params are **optional**.
+ 
     
-3. AdaptiveLayoutDelegateWithScreenSize
+#### AdaptiveLayoutDelegateWithScreenSize
     
-    This delegate builds layout based on **ScreenSize** (xSmall , small , medium , large , xLarge).
     
   <details><summary>Example</summary>
 
@@ -503,11 +501,13 @@ class _HomePageState extends State<HomePage> {
 
 </details>
   
-All params are **optional**.
     
-4. AdaptiveLayoutDelegateWithDesignLanguage
+#### AdaptiveLayoutDelegateWithDesignLanguage
 
  This delegate builds layout based on **DesignLaguage** (material , cupertino , fluent).
+    
+ All params are **optional**.
+    
     
   <details><summary>Example</summary>
 
@@ -553,4 +553,4 @@ class _HomePageState extends State<HomePage> {
 
 </details>
   
-All params are **optional**.
+
