@@ -1,3 +1,7 @@
+## 0.5.1
+
+* Fix: Rename allOsDelegate to allPlatformsDelegate (AdaptiveBuilder)
+
 ## 0.5.0+1
 
 * Put an example

@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       windowsDelegate: _getWindowsDelegate(),
       linuxDelegate: _getLinuxDelegate(),
       webDelegate: _getWebDelegate(),
-      allOsDelegate: _getAllOSDelegate(),
+      allPlatformsDelegate: _getAllOSDelegate(),
     );
   }
 

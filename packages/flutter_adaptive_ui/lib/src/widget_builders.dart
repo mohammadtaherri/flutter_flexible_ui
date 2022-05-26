@@ -159,7 +159,7 @@ class AdaptiveBuilder extends StatelessWidget {
     this.macosDelegate,
     this.linuxDelegate,
     this.webDelegate,
-    this.allOsDelegate,
+    this.allPlatformsDelegate,
     this.breakpointData,
   });
 
@@ -171,7 +171,7 @@ class AdaptiveBuilder extends StatelessWidget {
   final AdaptiveLayoutDelegate? linuxDelegate;
   final AdaptiveLayoutDelegate? macosDelegate;
   final AdaptiveLayoutDelegate? webDelegate;
-  final AdaptiveLayoutDelegate? allOsDelegate;
+  final AdaptiveLayoutDelegate? allPlatformsDelegate;
   final BreakpointData? breakpointData;
 
   @override
@@ -213,7 +213,7 @@ class AdaptiveBuilder extends StatelessWidget {
         }
 
         return b?.call(context, screen) ??
-            allOsDelegate?.getBuilder(screen)?.call(context, screen) ??
+            allPlatformsDelegate?.getBuilder(screen)?.call(context, screen) ??
             builder.call(context, screen);
       },
     );
