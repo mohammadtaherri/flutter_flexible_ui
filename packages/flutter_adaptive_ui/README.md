@@ -185,13 +185,13 @@ This widget accepts following params:
 This Widget obtains `BreakpointData` based on following rules:
 
 1. `breakpointData` param that is passed to constructor.
-2. If `breakpointData` param is null(no param is passed to constructor), It will obtain `breakpointData` from nearest `Breakpoint` (InheritedWidget) in widget tree.
+2. If `breakpointData` param is null(no param is passed to constructor), The `breakPointData` is obtained from the closest `Breakpoint` instance that encloses the given context.
 3. If there is no `Breakpoint` in widget tree above this widget, it will use the default sizes.
 
 
 Use this param to override the default sizes:
 
-1. Use `Breakpoint.of(context)` to obtain `breakpointData` from nearest `Breakpoint` and then override sizes by calling `copyWith()` method:
+1. Use `Breakpoint.of(context)` to obtain The `breakPointData` from the closest `Breakpoint` instance that encloses the given context and then override sizes by calling `copyWith()` method:
 ```dart
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -307,7 +307,7 @@ class _HomePageState extends State<HomePage> {
  
 | Param                 | Type                  |   Definition    |
 | ----------------------| --------------------- | ----------------|
-| mediaQueryData        | MediaQueryData        | Obtain from nearest MediaQuery widget |
+| mediaQueryData        | MediaQueryData        | The `mediaQueryData` from the closest `MediaQuery` instance that encloses the given context. |
 | breakpointData        | BreakpointData        | _                                     |
 | layoutConstraints     | BoxConstraints?       | Obtain from LayoutBuilder widget      |
 | screenSize            | ScreenSize            | xSmall , small , medium , large , xLarge |
