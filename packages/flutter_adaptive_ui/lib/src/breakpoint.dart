@@ -1,5 +1,10 @@
 part of flutter_adaptive_ui;
 
+/// Defines the configuration of the [Breakpoint].
+///
+///  See also:
+///
+///  * [Breakpoint]
 class BreakpointData {
   const BreakpointData({
     this.small = defaultMinSmallScreenWidth,
