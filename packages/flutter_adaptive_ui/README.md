@@ -6,7 +6,7 @@ Flutter provides new opportunities to build apps that can run on mobile, desktop
 
 For more informations follow this [link](https://docs.flutter.dev/development/ui/layout/building-adaptive-apps).
 
-This package uses **_Screen Size_** , **_Screen Type_** and **_Design language_** for building UI.
+This package uses **_Screen Size_** , **_Screen Type_** and **_Design language_** for building Adaptive UI.
 
 ### Screen Size
 * X Small
@@ -47,7 +47,7 @@ By default **_Screen Size_** and **_SCreen Type_** obtain from following table:
 
 And **_Design language_** : 
 
-| Platfoem           | Design Language |
+| Platform           | Design Language |
 | -------------------| ----------------|
 | Android - Fuchsia  | Material        | 
 | IOS - MacOs        | Cupertino       |
@@ -78,12 +78,15 @@ class MyApp extends StatelessWidget {
 ```
 
 Now you can override these default sizes by set `breakpointData` param:
-* You can use `Breakpoint.dflt()` that use default sizes : 
+
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive_ui/flutter_adaptive_ui.dart';
 
-void main() => runApp(const MyApp());
+main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -91,66 +94,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Breakpoint(
-      breakPointData: BreakpointData.dftl(),
-      child: MaterialApp(
-        home: HomePage(),
-      ),
-    );
-  }
-}
-```
-
-* You can override some sizes by `copyWith` method:
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_adaptive_ui/flutter_adaptive_ui.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Breakpoint(
-      breakPointData: BreakpointData.dftl().copyWith(
-        small: 350,
-        large: 1200,
-        mediumHandset: 400,
-        largeHandset: 450
-      ),
-      child: const MaterialApp(
-        home: HomePage(),
-      ),
-    );
-  }
-}
-```
-* You can also use `BreakpointData()` constructor to override all sizes:
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_adaptive_ui/flutter_adaptive_ui.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Breakpoint(
+      // Use default sizes or override.
       breakPointData: BreakpointData(
-        small: 350,
-        medium: 700,
-        large: 1200,
-        xlarge: 1800,
-        mediumHandset: 350,
-        largeHandset: 420,
+        // Base on [ScreenSize] (xSmall , small , medium , large , xLarge)
+        small: 600,
+        medium: 1024,
+        large: 1440,
+        xlarge: 1920,
+        // Base on [ScreenType] (smallHandset , mediumHandset , largeHandset , smallTablet , largetablet , smallDesktop , mediumDesktop , largeDesktop)
+        mediumHandset: 360,
+        largeHandset: 400,
         smallTablet: 600,
-        largeTablet: 900,
-        smallDesktop: 1100,
-        mediumDesktop: 1400,
-        largeDesktop: 1900,
+        largeTablet: 720,
+        smallDesktop: 1024,
+        mediumDesktop: 1440,
+        largeDesktop: 1920,
       ),
       child: MaterialApp(
         home: HomePage(),
@@ -160,13 +118,30 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-Then you should use `AdaptiveBuilder` to build adaptive UI.
-This Widget obtain `BreakpointData` base on following rules:
-1. `breakpointData` param in constructor.
-2. If `breakpointData` param is null, It will obtain `breakpointData` from nearest `Breakpoint` (InheritedWidget) in widget tree.
-3. If there is no `Breakpoint` in widget tree above this widget, it will use `BreakPointData.dflt()` (default sizes)
+All params are optional.
+
+| Param              | Definition    | Default value |
+| -------------------| ------------- | ------------- |
+| small              | Small Window width                        | 600           |
+| medium             | Medium Window width                       | 1024          |
+| large              | Large Window width                        | 1440          |
+| xLarge             | X Large Window width                      | 1920          |
+| mediumHandset      | Medium Desktop Minimum Screen Width       | 360           |
+| LargeHandset       | Large Handset Minimum Screen Width        | 400           |
+| smallTablet        | Small Desktop Minimum Screen Width        | 600           |
+| largeTablet        | Large Tablet Minimum Screen Width         | 720           |
+| smallDesktop       | Small Desktop Minimum Screen Width        | 1024          |
+| MediumDesktop      | Medium Desktop Minimum Screen Width       | 1440          |
+| largeDesktop       | Large Desktop Minimum Screen Width        | 1920          |
+
+
+- If screen width is less than the _small_ (default = 600), **Screen Size** will be **xSmall**
+- If screen width is less than the _mediumHandset_ (default = 360), **Screen Type** will be **smallHandset**
+
 
 ## Usage
+
+You should use `AdaptiveBuilder` to build adaptive UI.
 
 Wrap your entire screen with this widget:
 ```dart
@@ -187,24 +162,36 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 This widget accepts following params:
-```dart
-  final AdaptiveWidgetBuilder builder;
-  final AdaptiveLayoutDelegate? androidBuilder;
-  final AdaptiveLayoutDelegate? fuchsiaBuilder;
-  final AdaptiveLayoutDelegate? iosBuilder;
-  final AdaptiveLayoutDelegate? windowsBuilder;
-  final AdaptiveLayoutDelegate? linuxBuilder;
-  final AdaptiveLayoutDelegate? macosBuilder;
-  final AdaptiveLayoutDelegate? webBuilder;
-  final AdaptiveLayoutDelegate? allOsBuilder;
-  final BreakpointData? breakpointData;
-```
 
-* **breakpointData**
+
+| Param                 | Type                                      |  
+| ----------------------| ----------------------------------------- | 
+| Builder               | AdaptiveWidgetBuilder   (Required)        | 
+| androidDelegate       | AdaptiveLayoutDelegate? (Optional)        | 
+| fuchsiaDelegate       | AdaptiveLayoutDelegate? (Optional)        | 
+| iosDelegate           | AdaptiveLayoutDelegate? (Optional)        | 
+| WindowsDelegate       | AdaptiveLayoutDelegate? (Optional)        | 
+| macosDelegate         | AdaptiveLayoutDelegate? (Optional)        | 
+| linuxDelegate         | AdaptiveLayoutDelegate? (Optional)        | 
+| webDelegate           | AdaptiveLayoutDelegate? (Optional)        | 
+| allPlatformsDelegate  | AdaptiveLayoutDelegate? (Optional)        |
+| breakpointData        | BreakpointData?         (Optional)        |
+
+
+### Description
+
+- **breakpointData**
+
+This Widget obtains `BreakpointData` base on following rules:
+
+1. `breakpointData` param that is passed to constructor.
+2. If `breakpointData` param is null(no param is passed to constructor), It will obtain `breakpointData` from nearest `Breakpoint` (InheritedWidget) in widget tree.
+3. If there is no `Breakpoint` in widget tree above this widget, it will use default sizes.
+
 
 Use this param to override default sizes or sizes that obtain from nearest `Breakpoint`:
 
-1.
+1. Use `Breakpoint.of(context)` to obtain `breakpointData` from nearest `Breakpoint` and then override sizes by calling `copyWith()` method:
 ```dart
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -212,6 +199,7 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -229,7 +217,7 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-2.
+2. Or pass a fresh `breakpointData` by creating a `breakpointData` from scratch:
 ```dart
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -260,17 +248,14 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-If no param is passed,`AdaptiveBuilder` will obtain `breakpointData` from nearest `Breakpoint` or use default sizes.
 
-
-
-* **androidDelegate**
-* **fuchsiaDelegate**
-* **iosDelegate**
-* **windowsDelegate**
-* **macosDelegate**
-* **linuxDelegate**
-* **webDelegate**
+- **androidDelegate**
+- **fuchsiaDelegate**
+- **iosDelegate**
+- **windowsDelegate**
+- **macosDelegate**
+- **linuxDelegate**
+- **webDelegate**
 
 All this params are optional.
 
