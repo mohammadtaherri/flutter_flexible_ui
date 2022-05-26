@@ -1,6 +1,7 @@
 ## 0.5.1
 
 * Fix: Rename allOsDelegate to allPlatformsDelegate (AdaptiveBuilder)
+* Update README
 
 ## 0.5.0+1
 
