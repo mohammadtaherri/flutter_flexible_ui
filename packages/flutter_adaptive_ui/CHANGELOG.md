@@ -1,3 +1,7 @@
+## 0.7.0
+
+* Add some extension methods to Screen
+
 ## 0.6.0+1
 
 * Add persian README

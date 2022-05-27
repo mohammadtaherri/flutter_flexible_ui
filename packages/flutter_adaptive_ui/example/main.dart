@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Breakpoint(
       // Use default sizes or override.
-      breakPointData: BreakpointData(
+      breakpointData: BreakpointData(
         // Base on [ScreenSize] (xSmall , small , medium , large , xLarge)
         small: 600,
         medium: 1024,

@@ -206,14 +206,14 @@ class BreakpointData {
 class Breakpoint extends InheritedWidget {
   const Breakpoint({
     super.key,
-    this.breakPointData = const BreakpointData(),
+    this.breakpointData = const BreakpointData(),
     required super.child,
   });
-  final BreakpointData breakPointData;
+  final BreakpointData breakpointData;
 
   @override
   bool updateShouldNotify(covariant Breakpoint oldWidget) {
-    return oldWidget.breakPointData != breakPointData;
+    return oldWidget.breakpointData != breakpointData;
   }
 
   /// The [breakPointData] from the closest [Breakpoint] instance that encloses the given
@@ -221,6 +221,6 @@ class Breakpoint extends InheritedWidget {
   static BreakpointData? of(BuildContext context) {
     return context
         .dependOnInheritedWidgetOfExactType<Breakpoint>()
-        ?.breakPointData;
+        ?.breakpointData;
   }
 }
