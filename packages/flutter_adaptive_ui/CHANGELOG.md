@@ -1,3 +1,10 @@
+## 0.6.0
+
+* Add AdaptiveLayoutDelegateWithMinimallScreenSize
+* Add AdaptiveLayoutDelegateWithSingleBuilder
+* Rename builder to defaultBuilder in AdaptiveBuilder
+* Add defaultBuilder field to AdaptiveLayoutDelegate(s)
+
 ## 0.5.1+3
 
 ## 0.5.1+2

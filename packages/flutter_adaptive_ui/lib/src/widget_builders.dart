@@ -15,6 +15,7 @@ abstract class AdaptiveLayoutDelegate {
 
 class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithScreenType({
+    this.defaultBuilder,
     this.smallHandset,
     this.mediumHandset,
     this.largeHandset,
@@ -25,6 +26,7 @@ class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
     this.largeDesktop,
   });
 
+  final AdaptiveWidgetBuilder? defaultBuilder;
   final AdaptiveWidgetBuilder? smallHandset;
   final AdaptiveWidgetBuilder? mediumHandset;
   final AdaptiveWidgetBuilder? largeHandset;
@@ -37,35 +39,49 @@ class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
   @override
   @protected
   AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    AdaptiveWidgetBuilder? b;
+
     switch (screen.screenType) {
       case ScreenType.smallHandset:
-        return smallHandset;
+        b = smallHandset;
+        break;
       case ScreenType.mediumHandset:
-        return mediumHandset;
+        b = mediumHandset;
+        break;
       case ScreenType.largeHandset:
-        return largeHandset;
+        b = largeHandset;
+        break;
       case ScreenType.smallTablet:
-        return smallTablet;
+        b = smallTablet;
+        break;
       case ScreenType.largeTablet:
-        return largeTablet;
+        b = largeTablet;
+        break;
       case ScreenType.smallDesktop:
-        return smallDesktop;
+        b = smallDesktop;
+        break;
       case ScreenType.mediumDesktop:
-        return mediumDesktop;
+        b = mediumDesktop;
+        break;
       case ScreenType.largeDesktop:
-        return largeDesktop;
+        b = largeDesktop;
+        break;
     }
+
+    return b ?? defaultBuilder;
   }
 }
 
 class AdaptiveLayoutDelegateWithMinimallScreenType
     implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithMinimallScreenType({
+    this.defaultBuilder,
     this.handset,
     this.tablet,
     this.desktop,
   });
 
+  final AdaptiveWidgetBuilder? defaultBuilder;
   final AdaptiveWidgetBuilder? handset;
   final AdaptiveWidgetBuilder? tablet;
   final AdaptiveWidgetBuilder? desktop;
@@ -73,24 +89,31 @@ class AdaptiveLayoutDelegateWithMinimallScreenType
   @override
   @protected
   AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    AdaptiveWidgetBuilder? b;
     switch (screen.screenType) {
       case ScreenType.smallHandset:
       case ScreenType.mediumHandset:
       case ScreenType.largeHandset:
-        return handset;
+        b = handset;
+        break;
       case ScreenType.smallTablet:
       case ScreenType.largeTablet:
-        return tablet;
+        b = tablet;
+        break;
       case ScreenType.smallDesktop:
       case ScreenType.mediumDesktop:
       case ScreenType.largeDesktop:
-        return desktop;
+        b = desktop;
+        break;
     }
+
+    return b ?? defaultBuilder;
   }
 }
 
 class AdaptiveLayoutDelegateWithScreenSize implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithScreenSize({
+    this.defaultBuilder,
     this.xSmall,
     this.small,
     this.medium,
@@ -98,6 +121,7 @@ class AdaptiveLayoutDelegateWithScreenSize implements AdaptiveLayoutDelegate {
     this.xLarge,
   });
 
+  final AdaptiveWidgetBuilder? defaultBuilder;
   final AdaptiveWidgetBuilder? xSmall;
   final AdaptiveWidgetBuilder? small;
   final AdaptiveWidgetBuilder? medium;
@@ -107,29 +131,88 @@ class AdaptiveLayoutDelegateWithScreenSize implements AdaptiveLayoutDelegate {
   @override
   @protected
   AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    AdaptiveWidgetBuilder? b;
+
     switch (screen.screenSize) {
       case ScreenSize.xsmall:
-        return xSmall;
+        b = xSmall;
+        break;
       case ScreenSize.small:
-        return small;
+        b = small;
+        break;
       case ScreenSize.medium:
-        return medium;
+        b = medium;
+        break;
       case ScreenSize.large:
-        return large;
+        b = large;
+        break;
       case ScreenSize.xlarge:
-        return xLarge;
+        b = xLarge;
+        break;
     }
+
+    return b ?? defaultBuilder;
+  }
+}
+
+class AdaptiveLayoutDelegateWithMinimallScreenSize
+    implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateWithMinimallScreenSize({
+    this.defaultBuilder,
+    this.small,
+    this.medium,
+    this.large,
+  });
+
+  final AdaptiveWidgetBuilder? defaultBuilder;
+  final AdaptiveWidgetBuilder? small;
+  final AdaptiveWidgetBuilder? medium;
+  final AdaptiveWidgetBuilder? large;
+
+  @override
+  @protected
+  AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    AdaptiveWidgetBuilder? b;
+
+    switch (screen.screenSize) {
+      case ScreenSize.xsmall:
+      case ScreenSize.small:
+        b = small;
+        break;
+      case ScreenSize.medium:
+        b = medium;
+        break;
+      case ScreenSize.large:
+      case ScreenSize.xlarge:
+        b = large;
+        break;
+    }
+
+    return b ?? defaultBuilder;
+  }
+}
+
+class AdaptiveLayoutDelegateWithSingleBuilder
+    implements AdaptiveLayoutDelegate {
+  const AdaptiveLayoutDelegateWithSingleBuilder(this.builder);
+  final AdaptiveWidgetBuilder builder;
+
+  @override
+  AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    return builder;
   }
 }
 
 class AdaptiveLayoutDelegateWithDesignLanguage
     implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithDesignLanguage({
+    this.defaultBuilder,
     this.material,
     this.cupertino,
     this.fluent,
   });
 
+  final AdaptiveWidgetBuilder? defaultBuilder;
   final AdaptiveWidgetBuilder? material;
   final AdaptiveWidgetBuilder? cupertino;
   final AdaptiveWidgetBuilder? fluent;
@@ -137,14 +220,21 @@ class AdaptiveLayoutDelegateWithDesignLanguage
   @override
   @protected
   AdaptiveWidgetBuilder? getBuilder(Screen screen) {
+    AdaptiveWidgetBuilder? b;
+
     switch (screen.designLanguage) {
       case DesignLanguage.material:
-        return material;
+        b = material;
+        break;
       case DesignLanguage.cupertino:
-        return cupertino;
+        b = cupertino;
+        break;
       case DesignLanguage.fluent:
-        return fluent;
+        b = fluent;
+        break;
     }
+
+    return b ?? defaultBuilder;
   }
 }
 
@@ -306,7 +396,7 @@ class AdaptiveLayoutDelegateWithDesignLanguage
 class AdaptiveBuilder extends StatelessWidget {
   const AdaptiveBuilder({
     super.key,
-    required this.builder,
+    required this.defaultBuilder,
     this.androidDelegate,
     this.fuchsiaDelegate,
     this.iosDelegate,
@@ -318,7 +408,7 @@ class AdaptiveBuilder extends StatelessWidget {
     this.breakpointData,
   });
 
-  final AdaptiveWidgetBuilder builder;
+  final AdaptiveWidgetBuilder defaultBuilder;
   final AdaptiveLayoutDelegate? androidDelegate;
   final AdaptiveLayoutDelegate? fuchsiaDelegate;
   final AdaptiveLayoutDelegate? iosDelegate;
@@ -369,7 +459,7 @@ class AdaptiveBuilder extends StatelessWidget {
 
         return b?.call(context, screen) ??
             allPlatformsDelegate?.getBuilder(screen)?.call(context, screen) ??
-            builder.call(context, screen);
+            defaultBuilder.call(context, screen);
       },
     );
   }

@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveBuilder(
-      builder: (BuildContext context, Screen screen) {
+      defaultBuilder: (BuildContext context, Screen screen) {
         return const Center(
           child: Text('Default Builder'),
         );
@@ -54,12 +54,17 @@ class _HomePageState extends State<HomePage> {
       windowsDelegate: _getWindowsDelegate(),
       linuxDelegate: _getLinuxDelegate(),
       webDelegate: _getWebDelegate(),
-      allPlatformsDelegate: _getAlllatformsDelegate(),
+      allPlatformsDelegate: _getAllPlatformsDelegate(),
     );
   }
 
   AdaptiveLayoutDelegate? _getAndroidDelegate() {
     return AdaptiveLayoutDelegateWithMinimallScreenType(
+      defaultBuilder: (BuildContext context, Screen screen) {
+        return const Center(
+          child: Text('Android - Default'),
+        );
+      },
       handset: (BuildContext context, Screen screen) {
         return const Center(
           child: Text('Android - Handset'),
@@ -153,7 +158,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  AdaptiveLayoutDelegate? _getAlllatformsDelegate() {
+  AdaptiveLayoutDelegate? _getAllPlatformsDelegate() {
     return AdaptiveLayoutDelegateWithScreenSize(
       xSmall: (BuildContext context, Screen screen) {
         return const Center(

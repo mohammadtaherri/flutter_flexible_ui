@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-- **builder**
+- **defaultBuilder**
 - **androidDelegate**
 - **fuchsiaDelegate**
 - **iosDelegate**
@@ -270,13 +270,13 @@ First of all, this widget uses a custom delegate based on **PaltformType** (andr
 
 If a custom delegate is not provided or the custom delegate is provided but it does not provide a custom builder for the desired size, It will use the **allPlatformDelegate** for building UI.
 
-3. **builder**
+3. **defaultBuilder**
 
 Eventually, If for the desired platform is not provided a custom delegate or the custom delegate does not provide a custom builder for the desired size 
 and the **allPlatformDelegate** also does not provide that builder ,it will use the builder param for building UI.
 
 
-- **builder**
+- **defaultBuilder**
 
 This param is **required** and it is used as default builder to building UI.
 
@@ -294,7 +294,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveBuilder(
-      builder: (BuildContext context, Screen screen) {
+      defaultBuilder: (BuildContext context, Screen screen) {
         return const Center(
           child: Text('Default Builder'),
         );
@@ -445,6 +445,7 @@ class _HomePageState extends State<HomePage> {
  
     
 #### AdaptiveLayoutDelegateWithScreenSize
+#### AdaptiveLayoutDelegateWithMinimallScreenSize
     
     
   <details><summary>Example</summary>
@@ -554,3 +555,4 @@ class _HomePageState extends State<HomePage> {
 </details>
   
 
+#### AdaptiveLayoutDelegateWithSingleBuilder
