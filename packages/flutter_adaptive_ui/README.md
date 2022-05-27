@@ -30,7 +30,7 @@ This package uses **_Screen Size_** , **_Screen Type_** and **_Design language_*
 * Cupertino
 * Fluent
 
-By default **_Screen Size_** and **_SCreen Type_** are obtained from following table:
+By default the **_Screen Size_** and the **_SCreen Type_** are obtained from following table:
 
 | Screen Width Range | Screen Size   | Screen Type   |
 | -------------------| ------------- | ------------- |
@@ -45,7 +45,7 @@ By default **_Screen Size_** and **_SCreen Type_** are obtained from following t
 
 
 
-And **_Design language_** : 
+And the **_Design language_** : 
 
 | Platform           | Design Language |
 | -------------------| ----------------|
@@ -55,7 +55,7 @@ And **_Design language_** :
 | Others             | Material        | 
 
 
-You can change these default sizes by wrapping your `MaterialApp` in `Breakpoint`:
+You can change the default sizes by wrapping your `MaterialApp` in a`Breakpoint` widget:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-Now you can override the default sizes by set `breakpointData` param:
+Now you can override the default sizes by set a `breakpointData` param:
 
 
 ```dart
@@ -135,13 +135,13 @@ All params are optional.
 | largeDesktop       | The Minimum Screen Width of the large desktop        | 1920          |
 
 
-- If screen width is less than the _small_ (default = 600), **Screen Size** will be **xSmall**
-- If screen width is less than the _mediumHandset_ (default = 360), **Screen Type** will be **smallHandset**
+- If the screen width is less than the _small_ (default = 600),the **Screen Size** will be **xSmall**
+- If the screen width is less than the _mediumHandset_ (default = 360), the **Screen Type** will be **smallHandset**
 
 
 ## Usage
 
-You should use `AdaptiveBuilder` to build adaptive UI.
+You should use a `AdaptiveBuilder` widget to build an adaptive UI.
 
 Wrap your entire screen with this widget:
 ```dart
@@ -182,11 +182,11 @@ This widget accepts following params:
 
 - **breakpointData**
 
-This Widget obtains `BreakpointData` based on following rules:
+This Widget obtains the `BreakpointData` based on the following rules:
 
-1. `breakpointData` param that is passed to constructor.
-2. If `breakpointData` param is null(no param is passed to constructor), The `breakPointData` is obtained from the closest `Breakpoint` instance that encloses the given context.
-3. If there is no `Breakpoint` in widget tree above this widget, it will use the default sizes.
+1. the `breakpointData` param that is passed to the constructor.
+2. If the `breakpointData` param is null(no param is passed to the constructor), The `breakPointData` is obtained from the closest `Breakpoint` instance that encloses the given context.
+3. If there is no `Breakpoint` in the widget tree above this widget, it will use the default sizes.
 
 
 Use this param to override the default sizes:
@@ -258,13 +258,13 @@ class _HomePageState extends State<HomePage> {
 - **webDelegate**
 - **allPlatformsDelegate**
 
-First of all, this widget obtains **ScreenSize** , **ScreenType** and **Designlanguage** and then builds UI based on following rules:
+First of all, this widget obtains the **ScreenSize** , **ScreenType** and **Designlanguage** and then builds UI based on the following rules:
 
 1. **PlatformType**
 
-PlatformType is _android_ , _fuchsia_ , _iOS_ , _windows_ , _linux_ , _macOS_ or _web_ .
+The PlatformType is _android_ , _fuchsia_ , _iOS_ , _windows_ , _linux_ , _macOS_ or _web_ .
 
-First of all, this widget uses a custom delegate based on **PaltformType** (androidDelegate , fuchsiaDelegate , iosDelegate , windowsDelegate , macOSDelegate , linuxDelegate or webDelegate) to building UI.
+First of all, this widget uses a custom delegate based on the **PaltformType** (androidDelegate , fuchsiaDelegate , iosDelegate , windowsDelegate , macOSDelegate , linuxDelegate or webDelegate) to building UI.
 
 2. **allPlatformDelagate**
 
@@ -323,7 +323,7 @@ You must pass a `AdaptiveLayoutDelegate`.this class is an abstract class and you
 
 #### AdaptiveLayoutDelegateWithScreenType
 
-  This delegate builds layout based on **ScreenType** (smallHandset , mediumhandset , largeHandset , smallTablet , largeTablet , smallDesktop ,       mediumDesktop , largeDesktop).
+  This delegate builds layout based on the **ScreenType** (smallHandset , mediumhandset , largeHandset , smallTablet , largeTablet , smallDesktop ,       mediumDesktop , largeDesktop).
 
   All params are **optional**.
 
@@ -398,7 +398,7 @@ class _HomePageState extends State<HomePage> {
 
 #### AdaptiveLayoutDelegateWithMinimallScreenType
   
-   This delegate builds layout based on minimall **ScreenType** (handset , tablet , desktop);
+   This delegate builds layout based on the minimall **ScreenType** (handset , tablet , desktop);
   
   <details><summary>Example</summary>
 
@@ -505,7 +505,7 @@ class _HomePageState extends State<HomePage> {
     
 #### AdaptiveLayoutDelegateWithDesignLanguage
 
- This delegate builds layout based on **DesignLaguage** (material , cupertino , fluent).
+ This delegate builds layout based on the **DesignLaguage** (material , cupertino , fluent).
     
  All params are **optional**.
     
