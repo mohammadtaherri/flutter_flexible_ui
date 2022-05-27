@@ -2,6 +2,8 @@
 
 # Flutter Adaptive UI
 
+![0_t8MtUq5ko9abs0TD](https://user-images.githubusercontent.com/44123678/170714501-28c21458-4447-469c-8975-f14b64fc31f4.jpg)
+
 Flutter provides new opportunities to build apps that can run on mobile, desktop, and the web from a single codebase. However, with these opportunities, come new challenges. You want your app to feel familiar to users, adapting to each platform by maximizing usability and ensuring a comfortable and seamless experience. That is, you need to build apps that are not just multiplatform, but are fully platform adaptive.
 
 For more informations follow this [link](https://docs.flutter.dev/development/ui/layout/building-adaptive-apps).
