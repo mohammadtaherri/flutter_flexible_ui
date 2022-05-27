@@ -1,3 +1,7 @@
+## 0.6.0+1
+
+* Add persian README
+
 ## 0.6.0
 
 * Add AdaptiveLayoutDelegateWithMinimallScreenSize
