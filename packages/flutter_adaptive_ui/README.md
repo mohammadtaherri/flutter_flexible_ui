@@ -121,11 +121,11 @@ class MyApp extends StatelessWidget {
 All params are optional.
 
 | Param              | Definition                                           | Default value |
-| -------------------| ------------- ---------------------------------------| ------------- |
+| -------------------| ---------------------------------------------------- | ------------- |
 | small              | The Minimum Width of the small Screen                | 600           |
 | medium             | The Minimum Width of the medium Screen               | 1024          |
 | large              | The Minimum Width of the large Screen                | 1440          |
-| xLarge             | The Minimum Width of the xLarge Screen              | 1920          |
+| xLarge             | The Minimum Width of the xLarge Screen               | 1920          |
 | mediumHandset      | The Minimum Screen Width of the medium handset       | 360           |
 | LargeHandset       | The Minimum Screen Width of the large hanset         | 400           |
 | smallTablet        | The Minimum Screen Width of the small tablet         | 600           |
