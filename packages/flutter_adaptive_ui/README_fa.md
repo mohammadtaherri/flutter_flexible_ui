@@ -3,6 +3,8 @@
 
 # Flutter Adaptive UI
 
+![0_t8MtUq5ko9abs0TD](https://user-images.githubusercontent.com/44123678/170714501-28c21458-4447-469c-8975-f14b64fc31f4.jpg)
+
 فلاتر امکان ساخت برنامه های برای پلتفرم های مختلف مثل پلتفرم های دسکتاپی , موبایل و ... را می دهد.در نتیجه کاربر باید یک تجربه خوب از ارتباط با برنامه ما در پلتفرم های مختلف داشته باشد..
 
 برای مطالعه بیشتر این [لینک](https://docs.flutter.dev/development/ui/layout/building-adaptive-apps) را دنبال کنید.
