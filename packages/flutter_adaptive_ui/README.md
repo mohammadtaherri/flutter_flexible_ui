@@ -120,19 +120,19 @@ class MyApp extends StatelessWidget {
 
 All params are optional.
 
-| Param              | Definition    | Default value |
-| -------------------| ------------- | ------------- |
-| small              | Small Window width                        | 600           |
-| medium             | Medium Window width                       | 1024          |
-| large              | Large Window width                        | 1440          |
-| xLarge             | X Large Window width                      | 1920          |
-| mediumHandset      | Medium Desktop Minimum Screen Width       | 360           |
-| LargeHandset       | Large Handset Minimum Screen Width        | 400           |
-| smallTablet        | Small Desktop Minimum Screen Width        | 600           |
-| largeTablet        | Large Tablet Minimum Screen Width         | 720           |
-| smallDesktop       | Small Desktop Minimum Screen Width        | 1024          |
-| MediumDesktop      | Medium Desktop Minimum Screen Width       | 1440          |
-| largeDesktop       | Large Desktop Minimum Screen Width        | 1920          |
+| Param              | Definition                                           | Default value |
+| -------------------| ------------- ---------------------------------------| ------------- |
+| small              | The Minimum Width of the small Screen                | 600           |
+| medium             | The Minimum Width of the medium Screen               | 1024          |
+| large              | The Minimum Width of the large Screen                | 1440          |
+| xLarge             | The Minimum Width of the xLarge Screen              | 1920          |
+| mediumHandset      | The Minimum Screen Width of the medium handset       | 360           |
+| LargeHandset       | The Minimum Screen Width of the large hanset         | 400           |
+| smallTablet        | The Minimum Screen Width of the small tablet         | 600           |
+| largeTablet        | The Minimum Screen Width of the large tablet         | 720           |
+| smallDesktop       | The Minimum Screen Width of the small desktop        | 1024          |
+| MediumDesktop      | The Minimum Screen Width of the medium desktop       | 1440          |
+| largeDesktop       | The Minimum Screen Width of the large desktop        | 1920          |
 
 
 - If screen width is less than the _small_ (default = 600), **Screen Size** will be **xSmall**
