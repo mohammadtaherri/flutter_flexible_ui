@@ -1,6 +1,7 @@
 ## 0.7.0
 
 * Add some extension methods to Screen
+* Fix: Update -Min Dart SDK- version to 2.12.0
 
 ## 0.6.0+1
 
@@ -80,7 +81,7 @@
 
 * Add description to pubsepc.yaml
 * Add repository to pubsepc.yaml
-* Update Dart SDK version 
+* Fix: Update -Min Dart SDK- version to 2.17.0
 
 ## 0.1.0
 

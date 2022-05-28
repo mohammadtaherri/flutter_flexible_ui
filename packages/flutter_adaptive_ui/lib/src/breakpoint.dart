@@ -205,10 +205,10 @@ class BreakpointData {
 ///  * [WidgetsApp]
 class Breakpoint extends InheritedWidget {
   const Breakpoint({
-    super.key,
+    Key? key,
     this.breakpointData = const BreakpointData(),
-    required super.child,
-  });
+    required Widget child,
+  }) : super(key: key, child: child);
   final BreakpointData breakpointData;
 
   @override

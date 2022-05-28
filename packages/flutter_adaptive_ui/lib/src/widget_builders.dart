@@ -395,7 +395,7 @@ class AdaptiveLayoutDelegateWithDesignLanguage
 ///  * [Screen]
 class AdaptiveBuilder extends StatelessWidget {
   const AdaptiveBuilder({
-    super.key,
+    Key? key,
     required this.defaultBuilder,
     this.androidDelegate,
     this.fuchsiaDelegate,
@@ -406,7 +406,7 @@ class AdaptiveBuilder extends StatelessWidget {
     this.webDelegate,
     this.allPlatformsDelegate,
     this.breakpointData,
-  });
+  }) : super(key: key);
 
   final AdaptiveWidgetBuilder defaultBuilder;
   final AdaptiveLayoutDelegate? androidDelegate;

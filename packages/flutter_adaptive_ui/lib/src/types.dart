@@ -14,14 +14,11 @@ part of flutter_adaptive_ui;
 ///  * [Breakpoint]
 ///  * [Screen]
 enum ScreenSize {
-  xsmall('XSmall'),
-  small('Small'),
-  medium('Medium'),
-  large('Large'),
-  xlarge('XLarge');
-
-  const ScreenSize([this.debugLabel]);
-  final String? debugLabel;
+  xsmall,
+  small,
+  medium,
+  large,
+  xlarge,
 }
 
 /// Screen Type based on the screen width.
@@ -41,17 +38,14 @@ enum ScreenSize {
 ///  * [Breakpoint]
 ///  * [Screen]
 enum ScreenType {
-  smallHandset('Small Handset'),
-  mediumHandset('Medium Handset'),
-  largeHandset('Large Handset'),
-  smallTablet('Small Tablet'),
-  largeTablet('Large Tablet'),
-  smallDesktop('Small Desktop'),
-  mediumDesktop('Medium Desktop'),
-  largeDesktop('Large Desktop');
-
-  const ScreenType([this.debugLabel]);
-  final String? debugLabel;
+  smallHandset,
+  mediumHandset,
+  largeHandset,
+  smallTablet,
+  largeTablet,
+  smallDesktop,
+  mediumDesktop,
+  largeDesktop,
 }
 
 /// Design Language based on the [PlatformType].
@@ -66,12 +60,9 @@ enum ScreenType {
 ///  * [Screen]
 ///  * [getDefaultDesignLanguage]
 enum DesignLanguage {
-  material('Material'),
-  cupertino('Cupertino'),
-  fluent('Fluent');
-
-  const DesignLanguage([this.debugLabel]);
-  final String? debugLabel;
+  material,
+  cupertino,
+  fluent,
 }
 
 /// Platform Type based on the [TargetPlatform] and the[kIsWeb]
@@ -84,14 +75,11 @@ enum DesignLanguage {
 ///  * [Screen]
 ///  * [getDefaultPlatform]
 enum PlatformType {
-  android('Android'),
-  fuchsia('Fuchsia'),
-  iOS('IOS'),
-  macOS('MacOS'),
-  windows('Windows'),
-  linux('Linux'),
-  web('Web');
-
-  const PlatformType([this.debuglabel]);
-  final String? debuglabel;
+  android,
+  fuchsia,
+  iOS,
+  macOS,
+  windows,
+  linux,
+  web,
 }
