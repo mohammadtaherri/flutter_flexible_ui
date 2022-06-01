@@ -97,20 +97,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Breakpoint(
       // Use default sizes or override.
-      breakPointData: BreakpointData(
-        // Base on [ScreenSize] (xSmall , small , medium , large , xLarge)
-        small: 600,
-        medium: 1024,
-        large: 1440,
-        xlarge: 1920,
-        // Base on [ScreenType] (smallHandset , mediumHandset , largeHandset , smallTablet , largetablet , smallDesktop , mediumDesktop , largeDesktop)
-        mediumHandset: 360,
-        largeHandset: 400,
-        smallTablet: 600,
-        largeTablet: 720,
-        smallDesktop: 1024,
-        mediumDesktop: 1440,
-        largeDesktop: 1920,
+      breakpointData: BreakpointData(
+        // Based on [ScreenSize] (xSmall , small , medium , large , xLarge)
+        minSmallScreenWidth: 600,
+        minMediumScreenWidth: 1024,
+        minLargeScreenWidth: 1440,
+        minXLargeScreenWidth: 1920,
+        // Based on [ScreenType] (smallHandset , mediumHandset , largeHandset , smallTablet , largetablet , smallDesktop , mediumDesktop , largeDesktop)
+        minMediumHandsetWith: 360,
+        minLargeHandsetWith: 400,
+        minSmallTabletWidth: 600,
+        minLargeTabletWidth: 720,
+        minSmallDesktopWidth: 1024,
+        minMediumDesktopWidth: 1440,
+        minLargeDesktopWidth: 1920,
       ),
       child: MaterialApp(
         home: HomePage(),
@@ -233,17 +233,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return AdaptiveBuilder(
       breakpointData: BreakpointData(
-        small: 350,
-        medium: 700,
-        large: 1200,
-        xlarge: 1800,
-        mediumHandset: 350,
-        largeHandset: 420,
-        smallTablet: 600,
-        largeTablet: 900,
-        smallDesktop: 1100,
-        mediumDesktop: 1400,
-        largeDesktop: 1900,
+        minSmallScreenWidth: 350,
+        minMediumScreenWidth: 700,
+        minLargeScreenWidth: 1200,
+        minXLargeScreenWidth: 1800,
+        minMediumHandsetWith: 350,
+        minLargeHandsetWith: 420,
+        minSmallTabletWidth: 600,
+        minLargeTabletWidth: 900,
+        minSmallDesktopWidth: 1100,
+        minMediumDesktopWidth: 1400,
+        minLargeDesktopWidth: 1900,
       ),
     );
   }

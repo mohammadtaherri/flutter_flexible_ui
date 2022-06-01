@@ -13,19 +13,19 @@ class MyApp extends StatelessWidget {
     return const Breakpoint(
       // Use default sizes or override.
       breakpointData: BreakpointData(
-        // Base on [ScreenSize] (xSmall , small , medium , large , xLarge)
-        small: 600,
-        medium: 1024,
-        large: 1440,
-        xlarge: 1920,
-        // Base on [ScreenType] (smallHandset , mediumHandset , largeHandset , smallTablet , largetablet , smallDesktop , mediumDesktop , largeDesktop)
-        mediumHandset: 360,
-        largeHandset: 400,
-        smallTablet: 600,
-        largeTablet: 720,
-        smallDesktop: 1024,
-        mediumDesktop: 1440,
-        largeDesktop: 1920,
+        // Based on [ScreenSize] (xSmall , small , medium , large , xLarge)
+        minSmallScreenWidth: 600,
+        minMediumScreenWidth: 1024,
+        minLargeScreenWidth: 1440,
+        minXLargeScreenWidth: 1920,
+        // Based on [ScreenType] (smallHandset , mediumHandset , largeHandset , smallTablet , largetablet , smallDesktop , mediumDesktop , largeDesktop)
+        minMediumHandsetWith: 360,
+        minLargeHandsetWith: 400,
+        minSmallTabletWidth: 600,
+        minLargeTabletWidth: 720,
+        minSmallDesktopWidth: 1024,
+        minMediumDesktopWidth: 1440,
+        minLargeDesktopWidth: 1920,
       ),
       child: MaterialApp(
         home: HomePage(),

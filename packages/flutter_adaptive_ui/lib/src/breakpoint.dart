@@ -7,98 +7,99 @@ part of flutter_adaptive_ui;
 ///  * [Breakpoint]
 class BreakpointData {
   const BreakpointData({
-    this.small = defaultMinSmallScreenWidth,
-    this.medium = defaultMinMediumScreenWidth,
-    this.large = defaultMinLargeScreenWidth,
-    this.xlarge = defaultMinXLargeScreenWidth,
-    this.mediumHandset = defaultMinMediumHandsetScreenWidth,
-    this.largeHandset = defaultMinLargeHandsetScreenWidth,
-    this.smallTablet = defaultMinSmallTabletScreenWidth,
-    this.largeTablet = defaultMinLargeTabletScreenWidth,
-    this.smallDesktop = defaultMinSmallDesktopScreenWidth,
-    this.mediumDesktop = defaultMinMediumDesktopScreenWidth,
-    this.largeDesktop = defaultMinLargeDesktopScreenWidth,
+    this.minSmallScreenWidth = defaultMinSmallScreenWidth,
+    this.minMediumScreenWidth = defaultMinMediumScreenWidth,
+    this.minLargeScreenWidth = defaultMinLargeScreenWidth,
+    this.minXLargeScreenWidth = defaultMinXLargeScreenWidth,
+    this.minMediumHandsetWith = defaultMinMediumHandsetWidth,
+    this.minLargeHandsetWith = defaultMinLargeHandsetWidth,
+    this.minSmallTabletWidth = defaultMinSmallTabletWidth,
+    this.minLargeTabletWidth = defaultMinLargeTabletWidth,
+    this.minSmallDesktopWidth = defaultMinSmallDesktopWidth,
+    this.minMediumDesktopWidth = defaultMinMediumDesktopWidth,
+    this.minLargeDesktopWidth = defaultMinLargeDesktopWidth,
   });
 
-  /// The minimum screen width of Small window
-  final double small;
+  /// The minimum width of the Small Screen
+  final double minSmallScreenWidth;
 
-  /// The minimum screen width of Medium window
-  final double medium;
+  /// The minimum  width of the Medium window
+  final double minMediumScreenWidth;
 
-  /// The minimum screen width of Large window
-  final double large;
+  /// The minimum width of the Large Screen
+  final double minLargeScreenWidth;
 
-  /// The minimum screen width of X Large window
-  final double xlarge;
+  /// The minimum width of the XLarge Screen
+  final double minXLargeScreenWidth;
 
-  /// The minimum screen width of Medium Handset
-  final double mediumHandset;
+  /// The minimum width of the Medium Handset
+  final double minMediumHandsetWith;
 
-  /// The minimum screen width of Large Handset
-  final double largeHandset;
+  /// The minimum width of the Large Handset
+  final double minLargeHandsetWith;
 
-  /// The minimum screen width of Small Tablet
-  final double smallTablet;
+  /// The minimum width of the Small Tablet
+  final double minSmallTabletWidth;
 
-  /// The minimum screen width of Large Tablet
-  final double largeTablet;
+  /// The minimum width of the Large Tablet
+  final double minLargeTabletWidth;
 
-  /// The minimum screen width of Small Desktop
-  final double smallDesktop;
+  /// The minimum width of the Small Desktop
+  final double minSmallDesktopWidth;
 
-  /// The minimum screen width of Medium Desktop
-  final double mediumDesktop;
+  /// The minimum width of the Medium Desktop
+  final double minMediumDesktopWidth;
 
-  /// The minimum screen width of Large Desktop
-  final double largeDesktop;
+  /// The minimum width of the Large Desktop
+  final double minLargeDesktopWidth;
 
   ScreenSize _getScreenSize(double widht) {
     debugAssertIsValid();
-    if (widht >= xlarge) return ScreenSize.xlarge;
-    if (widht >= large) return ScreenSize.large;
-    if (widht >= medium) return ScreenSize.medium;
-    if (widht >= small) return ScreenSize.small;
+    if (widht >= minXLargeScreenWidth) return ScreenSize.xlarge;
+    if (widht >= minLargeScreenWidth) return ScreenSize.large;
+    if (widht >= minMediumScreenWidth) return ScreenSize.medium;
+    if (widht >= minSmallScreenWidth) return ScreenSize.small;
     return ScreenSize.xsmall;
   }
 
   ScreenType _getScreenType(double width) {
     debugAssertIsValid();
-    if (width >= largeDesktop) return ScreenType.largeDesktop;
-    if (width >= mediumDesktop) return ScreenType.mediumDesktop;
-    if (width >= smallDesktop) return ScreenType.smallDesktop;
-    if (width >= largeTablet) return ScreenType.largeTablet;
-    if (width >= smallTablet) return ScreenType.smallTablet;
-    if (width >= largeHandset) return ScreenType.largeHandset;
-    if (width >= mediumHandset) return ScreenType.mediumHandset;
+    if (width >= minLargeDesktopWidth) return ScreenType.largeDesktop;
+    if (width >= minMediumDesktopWidth) return ScreenType.mediumDesktop;
+    if (width >= minSmallDesktopWidth) return ScreenType.smallDesktop;
+    if (width >= minLargeTabletWidth) return ScreenType.largeTablet;
+    if (width >= minSmallTabletWidth) return ScreenType.smallTablet;
+    if (width >= minLargeHandsetWith) return ScreenType.largeHandset;
+    if (width >= minMediumHandsetWith) return ScreenType.mediumHandset;
     return ScreenType.smallHandset;
   }
 
   BreakpointData copyWith({
-    double? small,
-    double? medium,
-    double? large,
-    double? xlarge,
-    double? mediumHandset,
-    double? largeHandset,
-    double? smallTablet,
-    double? largeTablet,
-    double? smallDesktop,
-    double? mediumDesktop,
-    double? largeDesktop,
+    double? minSmallScreenWidth,
+    double? minMediumScreenWidth,
+    double? minLargeScreenWidth,
+    double? minXLargeScreenWidth,
+    double? minMediumHandsetWith,
+    double? minLargeHandsetWith,
+    double? minSmallTabletWidth,
+    double? minLargeTabletWidth,
+    double? minSmallDesktopWidth,
+    double? minMediumDesktopWidth,
+    double? minLargeDesktopWidth,
   }) =>
       BreakpointData(
-        small: small ?? this.small,
-        medium: medium ?? this.medium,
-        large: large ?? this.large,
-        xlarge: xlarge ?? this.xlarge,
-        mediumHandset: mediumHandset ?? this.mediumHandset,
-        largeHandset: largeHandset ?? this.largeHandset,
-        smallTablet: smallTablet ?? this.smallTablet,
-        largeTablet: largeTablet ?? this.largeTablet,
-        smallDesktop: smallDesktop ?? this.smallDesktop,
-        mediumDesktop: mediumDesktop ?? this.mediumDesktop,
-        largeDesktop: largeDesktop ?? this.largeDesktop,
+        minSmallScreenWidth: minSmallScreenWidth ?? this.minSmallScreenWidth,
+        minMediumScreenWidth: minMediumScreenWidth ?? this.minMediumScreenWidth,
+        minLargeScreenWidth: minLargeScreenWidth ?? this.minLargeScreenWidth,
+        minXLargeScreenWidth: minXLargeScreenWidth ?? this.minXLargeScreenWidth,
+        minMediumHandsetWith: minMediumHandsetWith ?? this.minMediumHandsetWith,
+        minLargeHandsetWith: minLargeHandsetWith ?? this.minLargeHandsetWith,
+        minSmallTabletWidth: minSmallTabletWidth ?? this.minSmallTabletWidth,
+        minLargeTabletWidth: minLargeTabletWidth ?? this.minLargeTabletWidth,
+        minSmallDesktopWidth: minSmallDesktopWidth ?? this.minSmallDesktopWidth,
+        minMediumDesktopWidth:
+            minMediumDesktopWidth ?? this.minMediumDesktopWidth,
+        minLargeDesktopWidth: minLargeDesktopWidth ?? this.minLargeDesktopWidth,
       );
 
   @override
@@ -106,49 +107,95 @@ class BreakpointData {
     if (other is! BreakpointData) return false;
     if (identical(this, other)) return true;
 
-    if (small != other.small) return false;
-    if (medium != other.medium) return false;
-    if (large == other.large) return false;
-    if (xlarge != other.xlarge) return false;
-    if (mediumHandset != other.mediumHandset) return false;
-    if (largeHandset != other.largeHandset) return false;
-    if (smallTablet != other.smallTablet) return false;
-    if (largeTablet != other.largeTablet) return false;
-    if (smallDesktop != other.smallDesktop) return false;
-    if (mediumDesktop != other.mediumDesktop) return false;
-    if (largeDesktop != other.largeDesktop) return false;
+    if (minSmallScreenWidth != other.minSmallScreenWidth) return false;
+    if (minMediumScreenWidth != other.minMediumScreenWidth) return false;
+    if (minLargeScreenWidth != other.minLargeScreenWidth) return false;
+    if (minXLargeScreenWidth != other.minXLargeScreenWidth) return false;
+    if (minMediumHandsetWith != other.minMediumHandsetWith) return false;
+    if (minLargeHandsetWith != other.minLargeHandsetWith) return false;
+    if (minSmallTabletWidth != other.minSmallTabletWidth) return false;
+    if (minLargeTabletWidth != other.minLargeTabletWidth) return false;
+    if (minSmallDesktopWidth != other.minSmallDesktopWidth) return false;
+    if (minMediumDesktopWidth != other.minMediumDesktopWidth) return false;
+    if (minLargeDesktopWidth != other.minLargeDesktopWidth) return false;
+
     return true;
   }
 
   @override
   int get hashCode =>
-      small.hashCode ^
-      medium.hashCode ^
-      large.hashCode ^
-      xlarge.hashCode ^
-      mediumHandset.hashCode ^
-      largeHandset.hashCode ^
-      smallTablet.hashCode ^
-      largeTablet.hashCode ^
-      smallDesktop.hashCode ^
-      mediumDesktop.hashCode ^
-      largeDesktop.hashCode;
+      minSmallScreenWidth.hashCode ^
+      minMediumScreenWidth.hashCode ^
+      minLargeScreenWidth.hashCode ^
+      minXLargeScreenWidth.hashCode ^
+      minMediumHandsetWith.hashCode ^
+      minLargeHandsetWith.hashCode ^
+      minSmallTabletWidth.hashCode ^
+      minLargeTabletWidth.hashCode ^
+      minSmallDesktopWidth.hashCode ^
+      minMediumDesktopWidth.hashCode ^
+      minLargeDesktopWidth.hashCode;
 
   void debugAssertIsValid() {
     void check(double size1, double size2, String label1, String label2) {
       assert(size2 > size1, '$label2 must be greater than $label1');
     }
 
-    check(small, medium, 'small', 'medium');
-    check(medium, large, 'medium', 'large');
-    check(large, xlarge, 'large', 'xlarge');
+    check(
+      minSmallScreenWidth,
+      minMediumScreenWidth,
+      'minSmallScreenWidth',
+      'minMediumScreenWidth',
+    );
+    check(
+      minMediumScreenWidth,
+      minLargeScreenWidth,
+      'minMediumScreenWidth',
+      'minLargeScreenWidth',
+    );
+    check(
+      minLargeScreenWidth,
+      minXLargeScreenWidth,
+      'minLargeScreenWidth',
+      'minXLargeScreenWidth',
+    );
 
-    check(mediumHandset, largeHandset, 'mediumHandset', 'largeHandset');
-    check(largeHandset, smallTablet, 'largeHandset', 'smallTablet');
-    check(smallTablet, largeTablet, 'smallTablet', 'largeTablet');
-    check(largeTablet, smallDesktop, 'largeTablet', 'smallDesktop');
-    check(smallDesktop, mediumDesktop, 'smallDesktop', 'mediumDesktop');
-    check(mediumDesktop, largeDesktop, 'mediumDesktop', 'largeDesktop');
+    check(
+      minMediumHandsetWith,
+      minLargeHandsetWith,
+      'minMediumHandsetWith',
+      'minLargeHandsetWith',
+    );
+    check(
+      minLargeHandsetWith,
+      minSmallTabletWidth,
+      'minLargeHandsetWith',
+      'minSmallTabletWidth',
+    );
+    check(
+      minSmallTabletWidth,
+      minLargeTabletWidth,
+      'minSmallTabletWidth',
+      'minLargeTabletWidth',
+    );
+    check(
+      minLargeTabletWidth,
+      minSmallDesktopWidth,
+      'minLargeTabletWidth',
+      'minSmallDesktopWidth',
+    );
+    check(
+      minSmallDesktopWidth,
+      minMediumDesktopWidth,
+      'minSmallDesktopWidth',
+      'minMediumDesktopWidth',
+    );
+    check(
+      minMediumDesktopWidth,
+      minLargeDesktopWidth,
+      'minMediumDesktopWidth',
+      'minLargeDesktopWidth',
+    );
   }
 }
 
