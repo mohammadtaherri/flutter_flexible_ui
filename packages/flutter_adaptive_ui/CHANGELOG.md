@@ -1,9 +1,17 @@
 ## 0.8.0-dev.1
 
+- **Refactor**: Rename BreakpointData's fields 
+  - small to minSmallScreenWidth
+  - medium to minMediumScreenWidth
+  - large to minLargeScreenWidht
+  - xLarge to minXLargeScreenWidht
+  - mediumHandset to minMediumHandsetwidth
+  - ...
+
 ## 0.7.0
 
 * Add some extension methods to Screen
-* Fix: Update -Min Dart SDK- version to 2.12.0
+* **Fix**: Update -Min Dart SDK- version to 2.12.0
 
 ## 0.6.0+1
 
@@ -20,14 +28,14 @@
 
 ## 0.5.1+2
 
-* Doc: Add some documents.
+* **Doc**: Add some documents.
 * Update README
 
 ## 0.5.1+1
 
 ## 0.5.1
 
-* Fix: Rename allOsDelegate to allPlatformsDelegate (AdaptiveBuilder)
+* **Fix**: Rename allOsDelegate to allPlatformsDelegate (AdaptiveBuilder)
 * Update README
 
 ## 0.5.0+1
@@ -46,8 +54,8 @@
 ## 0.4.0+1
 
 * Add some extension methods to BuildContext (breakpoint , mabybreakpoint)
-* Fix: Rename builder to delegate in AdaptiveBuilder fields
-* Fix: Change AdaptiveLayoutDelegates fields to name params.
+* **Fix**: Rename builder to delegate in AdaptiveBuilder fields
+* **Fix**: Change AdaptiveLayoutDelegates fields to name params.
 * Doc: Add some documents.
 * Add README
 
@@ -71,7 +79,7 @@
 
 ## 0.1.1+3
 
-* Doc: Add some documents.
+* **Doc**: Add some documents.
 
 ## 0.1.1+2
 
@@ -83,7 +91,7 @@
 
 * Add description to pubsepc.yaml
 * Add repository to pubsepc.yaml
-* Fix: Update -Min Dart SDK- version to 2.17.0
+* **Fix**: Update -Min Dart SDK- version to 2.17.0
 
 ## 0.1.0
 

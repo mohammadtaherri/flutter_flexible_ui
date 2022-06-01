@@ -128,13 +128,13 @@ All params are optional.
 | medium             | The Minimum Width of the medium Screen               | 1024          |
 | large              | The Minimum Width of the large Screen                | 1440          |
 | xLarge             | The Minimum Width of the xLarge Screen               | 1920          |
-| mediumHandset      | The Minimum Screen Width of the medium handset       | 360           |
-| LargeHandset       | The Minimum Screen Width of the large hanset         | 400           |
-| smallTablet        | The Minimum Screen Width of the small tablet         | 600           |
-| largeTablet        | The Minimum Screen Width of the large tablet         | 720           |
-| smallDesktop       | The Minimum Screen Width of the small desktop        | 1024          |
-| MediumDesktop      | The Minimum Screen Width of the medium desktop       | 1440          |
-| largeDesktop       | The Minimum Screen Width of the large desktop        | 1920          |
+| mediumHandset      | The Minimum Width of the medium handset              | 360           |
+| LargeHandset       | The Minimum Width of the large hanset                | 400           |
+| smallTablet        | The Minimum Width of the small tablet                | 600           |
+| largeTablet        | The Minimum Width of the large tablet                | 720           |
+| smallDesktop       | The Minimum Width of the small desktop               | 1024          |
+| MediumDesktop      | The Minimum Width of the medium desktop              | 1440          |
+| largeDesktop       | The Minimum Width of the large desktop               | 1920          |
 
 
 - If the screen width is less than the _small_ (default = 600),the **Screen Size** will be **xSmall**
