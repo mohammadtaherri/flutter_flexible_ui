@@ -397,6 +397,30 @@ class AdaptiveBuilder extends StatelessWidget {
   const AdaptiveBuilder({
     Key? key,
     required this.defaultBuilder,
+    AdaptiveLayoutDelegate? layoutDelegate,
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+        this.androidDelegate,
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+        this.fuchsiaDelegate,
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+        this.iosDelegate,
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+        this.windowsDelegate,
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+        this.macosDelegate,
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+        this.linuxDelegate,
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+        this.webDelegate,
+    @Deprecated('Use `layoutDelegate` instead. Will be removed in v0.9.0')
+        AdaptiveLayoutDelegate? allPlatformsDelegate,
+    this.breakpointData,
+  })  : allPlatformsDelegate = layoutDelegate ?? allPlatformsDelegate,
+        super(key: key);
+
+  const AdaptiveBuilder.custom({
+    Key? key,
+    required this.defaultBuilder,
     this.androidDelegate,
     this.fuchsiaDelegate,
     this.iosDelegate,
