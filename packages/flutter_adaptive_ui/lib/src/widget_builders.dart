@@ -489,8 +489,8 @@ class AdaptiveBuilder extends StatelessWidget {
   }
 }
 
-class PlatfoemBuilder extends StatelessWidget {
-  const PlatfoemBuilder({
+class PlatformBuilder extends StatelessWidget {
+  const PlatformBuilder({
     Key? key,
     required this.defaultBuilder,
     this.androidBuilder,
@@ -541,6 +541,45 @@ class PlatfoemBuilder extends StatelessWidget {
         break;
       case PlatformType.linux:
         b = linuxBuilder;
+        break;
+    }
+
+    return b?.call(context, screen) ?? defaultBuilder.call(context, screen);
+  }
+}
+
+class AdaptiveDesign extends StatelessWidget {
+  const AdaptiveDesign({
+    Key? key,
+    required this.defaultBuilder,
+    this.material,
+    this.cupertino,
+    this.fluent,
+  }) : super(key: key);
+
+  final AdaptiveWidgetBuilder defaultBuilder;
+  final AdaptiveWidgetBuilder? material;
+  final AdaptiveWidgetBuilder? cupertino;
+  final AdaptiveWidgetBuilder? fluent;
+
+  @override
+  Widget build(BuildContext context) {
+    Screen screen = Screen(
+      mediaQueryData: MediaQuery.of(context),
+      breakpointData: Breakpoint.of(context) ?? const BreakpointData(),
+    );
+
+    AdaptiveWidgetBuilder? b;
+
+    switch (screen.designLanguage) {
+      case DesignLanguage.material:
+        b = material;
+        break;
+      case DesignLanguage.cupertino:
+        b = cupertino;
+        break;
+      case DesignLanguage.fluent:
+        b = fluent;
         break;
     }
 
