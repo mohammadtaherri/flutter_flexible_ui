@@ -488,3 +488,62 @@ class AdaptiveBuilder extends StatelessWidget {
     );
   }
 }
+
+class PlatfoemBuilder extends StatelessWidget {
+  const PlatfoemBuilder({
+    Key? key,
+    required this.defaultBuilder,
+    this.androidBuilder,
+    this.fuchsiaBuilder,
+    this.iosBuilder,
+    this.windowsBuilder,
+    this.macosBuilder,
+    this.linuxBuilder,
+    this.webBuilder,
+  }) : super(key: key);
+
+  final AdaptiveWidgetBuilder defaultBuilder;
+  final AdaptiveWidgetBuilder? androidBuilder;
+  final AdaptiveWidgetBuilder? fuchsiaBuilder;
+  final AdaptiveWidgetBuilder? iosBuilder;
+  final AdaptiveWidgetBuilder? windowsBuilder;
+  final AdaptiveWidgetBuilder? macosBuilder;
+  final AdaptiveWidgetBuilder? linuxBuilder;
+  final AdaptiveWidgetBuilder? webBuilder;
+
+  @override
+  Widget build(BuildContext context) {
+    Screen screen = Screen(
+      mediaQueryData: MediaQuery.of(context),
+      breakpointData: Breakpoint.of(context) ?? const BreakpointData(),
+    );
+
+    AdaptiveWidgetBuilder? b;
+
+    switch (screen.platform) {
+      case PlatformType.web:
+        b = webBuilder;
+        break;
+      case PlatformType.android:
+        b = androidBuilder;
+        break;
+      case PlatformType.fuchsia:
+        b = fuchsiaBuilder;
+        break;
+      case PlatformType.iOS:
+        b = iosBuilder;
+        break;
+      case PlatformType.windows:
+        b = windowsBuilder;
+        break;
+      case PlatformType.macOS:
+        b = macosBuilder;
+        break;
+      case PlatformType.linux:
+        b = linuxBuilder;
+        break;
+    }
+
+    return b?.call(context, screen) ?? defaultBuilder.call(context, screen);
+  }
+}
