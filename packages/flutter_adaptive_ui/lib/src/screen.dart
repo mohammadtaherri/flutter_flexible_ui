@@ -9,13 +9,11 @@ part of flutter_adaptive_ui;
 ///  * [AdaptiveBuilder]
 ///  * [AdaptiveLayoutDelegate]
 class Screen {
-  Screen({
+  Screen._({
     required this.mediaQueryData,
     required this.breakpointData,
-    this.layoutConstraints,
   }) {
-    final double width =
-        layoutConstraints?.maxWidth ?? mediaQueryData.size.width;
+    final double width = mediaQueryData.size.width;
 
     platform = getDefaultPlatform();
     designLanguage = getDefaultDesignLanguage();
@@ -23,9 +21,21 @@ class Screen {
     screenType = breakpointData._getScreenType(width);
   }
 
+  factory Screen.fromContext(BuildContext context) => Screen._(
+        mediaQueryData: MediaQuery.of(context),
+        breakpointData: Breakpoint.of(context) ?? const BreakpointData(),
+      );
+
+  factory Screen.fromWindow() {
+    WidgetsFlutterBinding.ensureInitialized();
+    return Screen._(
+      mediaQueryData: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
+      breakpointData: const BreakpointData(),
+    );
+  }
+
   final MediaQueryData mediaQueryData;
   final BreakpointData breakpointData;
-  final BoxConstraints? layoutConstraints;
 
   /// Screen Size based on screen width.
   /// This field is obtained by [BreakpointData._getScreenSize].
@@ -90,7 +100,8 @@ class Screen {
   ///  * [getDefaultPlatform]
   late final PlatformType platform;
 
-  static Screen of(BuildContext context) => Screen(
+  @Deprecated('Use `Screen.fromContext` instead. Will be removed in v1.0.0')
+  static Screen of(BuildContext context) => Screen._(
         mediaQueryData: MediaQuery.of(context),
         breakpointData: Breakpoint.of(context) ?? const BreakpointData(),
       );

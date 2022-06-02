@@ -1,3 +1,11 @@
+## 0.8.0-dev.3
+
+* **BREAKING**:feat: Add Screen.fromContext (factory) to Screen
+* **BREAKING**:feat: Add Screen.fromWindow (factory) to Screen
+* **BREAKING**:refactor: Make Screen's default constructor private 
+* **BREAKING**:fix: Remove LayoutBuilder from AdaptiveBuilder and remove layoutConstraints field from Screen
+* **DEPRECATE**:fix: Screen.of(context) deprecated in favor of Screen.fromContext
+
 ## 0.8.0-dev.2
 
 * **BREAKING**:feat: Add PlatformBuilder (widget)

@@ -398,21 +398,21 @@ class AdaptiveBuilder extends StatelessWidget {
     Key? key,
     required this.defaultBuilder,
     AdaptiveLayoutDelegate? layoutDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
         this.androidDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
         this.fuchsiaDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
         this.iosDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
         this.windowsDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
         this.macosDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
         this.linuxDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v0.9.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
         this.webDelegate,
-    @Deprecated('Use `layoutDelegate` instead. Will be removed in v0.9.0')
+    @Deprecated('Use `layoutDelegate` instead. Will be removed in v1.0.0')
         AdaptiveLayoutDelegate? allPlatformsDelegate,
     this.breakpointData,
   })  : allPlatformsDelegate = layoutDelegate ?? allPlatformsDelegate,
@@ -445,47 +445,41 @@ class AdaptiveBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext ctx, BoxConstraints constraints) {
-        Screen screen = Screen(
-          mediaQueryData: MediaQuery.of(context),
-          breakpointData: breakpointData ??
-              Breakpoint.of(context) ??
-              const BreakpointData(),
-          layoutConstraints: constraints,
-        );
-
-        AdaptiveWidgetBuilder? b;
-
-        switch (screen.platform) {
-          case PlatformType.web:
-            b = webDelegate?.getBuilder(screen);
-            break;
-          case PlatformType.android:
-            b = androidDelegate?.getBuilder(screen);
-            break;
-          case PlatformType.fuchsia:
-            b = fuchsiaDelegate?.getBuilder(screen);
-            break;
-          case PlatformType.iOS:
-            b = iosDelegate?.getBuilder(screen);
-            break;
-          case PlatformType.windows:
-            b = windowsDelegate?.getBuilder(screen);
-            break;
-          case PlatformType.macOS:
-            b = macosDelegate?.getBuilder(screen);
-            break;
-          case PlatformType.linux:
-            b = linuxDelegate?.getBuilder(screen);
-            break;
-        }
-
-        return b?.call(context, screen) ??
-            allPlatformsDelegate?.getBuilder(screen)?.call(context, screen) ??
-            defaultBuilder.call(context, screen);
-      },
+    Screen screen = Screen._(
+      mediaQueryData: MediaQuery.of(context),
+      breakpointData:
+          breakpointData ?? Breakpoint.of(context) ?? const BreakpointData(),
     );
+
+    AdaptiveWidgetBuilder? b;
+
+    switch (screen.platform) {
+      case PlatformType.web:
+        b = webDelegate?.getBuilder(screen);
+        break;
+      case PlatformType.android:
+        b = androidDelegate?.getBuilder(screen);
+        break;
+      case PlatformType.fuchsia:
+        b = fuchsiaDelegate?.getBuilder(screen);
+        break;
+      case PlatformType.iOS:
+        b = iosDelegate?.getBuilder(screen);
+        break;
+      case PlatformType.windows:
+        b = windowsDelegate?.getBuilder(screen);
+        break;
+      case PlatformType.macOS:
+        b = macosDelegate?.getBuilder(screen);
+        break;
+      case PlatformType.linux:
+        b = linuxDelegate?.getBuilder(screen);
+        break;
+    }
+
+    return b?.call(context, screen) ??
+        allPlatformsDelegate?.getBuilder(screen)?.call(context, screen) ??
+        defaultBuilder.call(context, screen);
   }
 }
 
@@ -513,7 +507,7 @@ class PlatformBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Screen screen = Screen(
+    Screen screen = Screen._(
       mediaQueryData: MediaQuery.of(context),
       breakpointData: Breakpoint.of(context) ?? const BreakpointData(),
     );
@@ -564,7 +558,7 @@ class AdaptiveDesign extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Screen screen = Screen(
+    Screen screen = Screen._(
       mediaQueryData: MediaQuery.of(context),
       breakpointData: Breakpoint.of(context) ?? const BreakpointData(),
     );
