@@ -1,6 +1,13 @@
+## 0.8.0-dev.2
+
+* **BREAKING**:feat: Add PlatformBuilder (widget)
+* **BREAKING**:feat: Add AdaptiveDesign  (widget)
+* **BREAKING**:feat: Add AdaptiveBuilder.custom constructor to AdaptiveBuilder widget
+- **DEPRECATE**:fix: some params in AdaptiveBuilder constructor deprecated in favor of AdaptiveBuilder.custom constructor.
+
 ## 0.8.0-dev.1
 
-- **Refactor**: Rename BreakpointData's fields 
+- **BREAKING**:refactor: Rename BreakpointData's fields 
   - small to minSmallScreenWidth
   - medium to minMediumScreenWidth
   - large to minLargeScreenWidht
@@ -10,7 +17,7 @@
 
 ## 0.7.0
 
-* Add some extension methods to Screen
+* **BREAKING**:feat: Add some extension methods to Screen
 * **Fix**: Update -Min Dart SDK- version to 2.12.0
 
 ## 0.6.0+1
@@ -19,10 +26,10 @@
 
 ## 0.6.0
 
-* Add AdaptiveLayoutDelegateWithMinimallScreenSize
-* Add AdaptiveLayoutDelegateWithSingleBuilder
-* Rename builder to defaultBuilder in AdaptiveBuilder
-* Add defaultBuilder field to AdaptiveLayoutDelegate(s)
+* **BREAKING**:feat: Add AdaptiveLayoutDelegateWithMinimallScreenSize
+* **BREAKING**:feat: Add AdaptiveLayoutDelegateWithSingleBuilder
+* **BREAKING**:refactor: Rename builder to defaultBuilder in AdaptiveBuilder
+* **BREAKING**:feat: Add defaultBuilder field to AdaptiveLayoutDelegate(s)
 
 ## 0.5.1+3
 
@@ -35,7 +42,7 @@
 
 ## 0.5.1
 
-* **Fix**: Rename allOsDelegate to allPlatformsDelegate (AdaptiveBuilder)
+* **BREAKING**:refactor: Rename allOsDelegate to allPlatformsDelegate (AdaptiveBuilder)
 * Update README
 
 ## 0.5.0+1
@@ -44,16 +51,16 @@
 
 ## 0.5.0
 
-* Rename DeviceConfig to Screen
-* Add mediaQUeryData , breakpointData and layoutConstraints to Screen
-* Obtain ScreenType and ScreenSize base on layoutConstraint and then media query
-* Wrap AdaptiveBuilder result in LayoutBuilder
-* Remove maybeOf from Breakpoint
-* Add of(context) method to Screen
+* **BREAKING**:refactor: Rename DeviceConfig to Screen
+* **BREAKING**:feat: Add mediaQUeryData , breakpointData and layoutConstraints to Screen
+* **BREAKING**:feat: Obtain ScreenType and ScreenSize base on layoutConstraint and then media query
+* **BREAKING**:feat: Wrap AdaptiveBuilder result in LayoutBuilder
+* **BREAKING**:refactor: Remove maybeOf from Breakpoint
+* **BREAKING**:feat: Add of(context) method to Screen
 
 ## 0.4.0+1
 
-* Add some extension methods to BuildContext (breakpoint , mabybreakpoint)
+* **BREAKING**:feat: Add some extension methods to BuildContext (breakpoint , mabybreakpoint)
 * **Fix**: Rename builder to delegate in AdaptiveBuilder fields
 * **Fix**: Change AdaptiveLayoutDelegates fields to name params.
 * Doc: Add some documents.
@@ -62,20 +69,20 @@
 ## 0.4.0
 
 * Update AdaptiveBuilder: get breakpointData in constructor.
-* Add PlatformType (enum).
-* Add getDefaultPlatform top level function.
-* Add getDefaultDesignLanguage top level function.
+* **BREAKING**:feat: Add PlatformType (enum).
+* **BREAKING**:feat: Add getDefaultPlatform top level function.
+* **BREAKING**:feat: Add getDefaultDesignLanguage top level function.
 
 ## 0.3.0
 
-* Add BreakpointData.
-* Add Breakpoint (InheritedWidget).
-* Update DeviceConfig to use breakpoint.
+* **BREAKING**:feat: Add BreakpointData.
+* **BREAKING**:feat: Add Breakpoint (InheritedWidget).
+* **BREAKING**:feat: Update DeviceConfig to use breakpoint.
 
 ## 0.2.0
 
-* Rename WindowType to ScreenType.
-* Rename WindowSize to ScreenSize.
+* **BREAKING**:refactor:Rename WindowType to ScreenType.
+* **BREAKING**:refactor:Rename WindowSize to ScreenSize.
 
 ## 0.1.1+3
 
