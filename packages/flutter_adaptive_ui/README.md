@@ -730,7 +730,33 @@ The documents will be written in the future.
 
 ## AdaptiveDesign
 
-The documents will be written in the future.
+```dart
+@override
+  Widget build(BuildContext context) {
+    return AdaptiveDesign(
+      defaultBuilder: (BuildContext context, Screen screen) {
+        return const Center(
+          child: Text('Default Builder'),
+        );
+      },
+      material: (BuildContext context, Screen screen) {
+        return const Center(
+          child: Text('Material'),
+        );
+      },
+      cupertino: (BuildContext context, Screen screen) {
+        return const Center(
+          child: Text('Cupertino'),
+        );
+      },
+      fluent: (BuildContext context, Screen screen) {
+        return const Center(
+          child: Text('Fluent'),
+        );
+      },
+    );
+  }
+  ```
    
 ## Screen
 
