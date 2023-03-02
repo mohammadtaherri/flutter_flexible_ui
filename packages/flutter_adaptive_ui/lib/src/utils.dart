@@ -1,6 +1,6 @@
 part of flutter_adaptive_ui;
 
-/// A top level function taht obtains [PlatformType] based on
+/// A top level function that obtains [PlatformType] based on
 /// the [TargetPlatform] and the [kIsWeb].
 ///
 /// If the [kIsWeb] is true, it will be web.
@@ -29,7 +29,7 @@ PlatformType getDefaultPlatform() {
   }
 }
 
-/// A top level function taht obtains [DesignLanguage] based on
+/// A top level function that obtains [DesignLanguage] based on
 /// the [PlatformType].
 ///
 /// If the [PlatformType] is android or fuchsia, it will be material.

@@ -1,8 +1,7 @@
 part of flutter_adaptive_ui;
 
 /// The signature of the [AdaptiveBuilder] builder function.
-typedef AdaptiveWidgetBuilder = Widget Function(
-    BuildContext context, Screen screen);
+typedef AdaptiveWidgetBuilder = Widget Function(BuildContext context, Screen screen);
 
 abstract class AdaptiveLayoutDelegate {
   /// Abstract const constructor. This constructor enables subclasses to provide
@@ -72,8 +71,7 @@ class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
   }
 }
 
-class AdaptiveLayoutDelegateWithMinimallScreenType
-    implements AdaptiveLayoutDelegate {
+class AdaptiveLayoutDelegateWithMinimallScreenType implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithMinimallScreenType({
     this.defaultBuilder,
     this.handset,
@@ -155,8 +153,7 @@ class AdaptiveLayoutDelegateWithScreenSize implements AdaptiveLayoutDelegate {
   }
 }
 
-class AdaptiveLayoutDelegateWithMinimallScreenSize
-    implements AdaptiveLayoutDelegate {
+class AdaptiveLayoutDelegateWithMinimallScreenSize implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithMinimallScreenSize({
     this.defaultBuilder,
     this.small,
@@ -192,8 +189,7 @@ class AdaptiveLayoutDelegateWithMinimallScreenSize
   }
 }
 
-class AdaptiveLayoutDelegateWithSingleBuilder
-    implements AdaptiveLayoutDelegate {
+class AdaptiveLayoutDelegateWithSingleBuilder implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithSingleBuilder(this.builder);
   final AdaptiveWidgetBuilder builder;
 
@@ -203,8 +199,7 @@ class AdaptiveLayoutDelegateWithSingleBuilder
   }
 }
 
-class AdaptiveLayoutDelegateWithDesignLanguage
-    implements AdaptiveLayoutDelegate {
+class AdaptiveLayoutDelegateWithDesignLanguage implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithDesignLanguage({
     this.defaultBuilder,
     this.material,
@@ -398,19 +393,19 @@ class AdaptiveBuilder extends StatelessWidget {
     Key? key,
     required this.defaultBuilder,
     AdaptiveLayoutDelegate? layoutDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` constructor instead. Will be removed in v1.0.0')
         this.androidDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` constructor instead. Will be removed in v1.0.0')
         this.fuchsiaDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` constructor instead. Will be removed in v1.0.0')
         this.iosDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` constructor instead. Will be removed in v1.0.0')
         this.windowsDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` constructor instead. Will be removed in v1.0.0')
         this.macosDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` constructor instead. Will be removed in v1.0.0')
         this.linuxDelegate,
-    @Deprecated('Use `AdaptiveBuilder.custom` counstructor instead. Will be removed in v1.0.0')
+    @Deprecated('Use `AdaptiveBuilder.custom` constructor instead. Will be removed in v1.0.0')
         this.webDelegate,
     @Deprecated('Use `layoutDelegate` instead. Will be removed in v1.0.0')
         AdaptiveLayoutDelegate? allPlatformsDelegate,
@@ -447,8 +442,7 @@ class AdaptiveBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     Screen screen = Screen._(
       mediaQueryData: MediaQuery.of(context),
-      breakpointData:
-          breakpointData ?? Breakpoint.of(context) ?? const BreakpointData(),
+      breakpointData: breakpointData ?? Breakpoint.of(context) ?? const BreakpointData(),
     );
 
     AdaptiveWidgetBuilder? b;
