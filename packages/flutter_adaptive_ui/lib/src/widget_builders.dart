@@ -1,8 +1,7 @@
 part of flutter_adaptive_ui;
 
 /// The signature of the [AdaptiveBuilder] builder function.
-typedef AdaptiveWidgetBuilder = Widget Function(
-    BuildContext context, Screen screen);
+typedef AdaptiveWidgetBuilder = Widget Function(BuildContext context, Screen screen);
 
 abstract class AdaptiveLayoutDelegate {
   /// Abstract const constructor. This constructor enables subclasses to provide
@@ -72,8 +71,7 @@ class AdaptiveLayoutDelegateWithScreenType implements AdaptiveLayoutDelegate {
   }
 }
 
-class AdaptiveLayoutDelegateWithMinimallScreenType
-    implements AdaptiveLayoutDelegate {
+class AdaptiveLayoutDelegateWithMinimallScreenType implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithMinimallScreenType({
     this.defaultBuilder,
     this.handset,
@@ -155,8 +153,7 @@ class AdaptiveLayoutDelegateWithScreenSize implements AdaptiveLayoutDelegate {
   }
 }
 
-class AdaptiveLayoutDelegateWithMinimallScreenSize
-    implements AdaptiveLayoutDelegate {
+class AdaptiveLayoutDelegateWithMinimallScreenSize implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithMinimallScreenSize({
     this.defaultBuilder,
     this.small,
@@ -192,8 +189,7 @@ class AdaptiveLayoutDelegateWithMinimallScreenSize
   }
 }
 
-class AdaptiveLayoutDelegateWithSingleBuilder
-    implements AdaptiveLayoutDelegate {
+class AdaptiveLayoutDelegateWithSingleBuilder implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithSingleBuilder(this.builder);
   final AdaptiveWidgetBuilder builder;
 
@@ -203,8 +199,7 @@ class AdaptiveLayoutDelegateWithSingleBuilder
   }
 }
 
-class AdaptiveLayoutDelegateWithDesignLanguage
-    implements AdaptiveLayoutDelegate {
+class AdaptiveLayoutDelegateWithDesignLanguage implements AdaptiveLayoutDelegate {
   const AdaptiveLayoutDelegateWithDesignLanguage({
     this.defaultBuilder,
     this.material,
@@ -445,11 +440,7 @@ class AdaptiveBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Screen screen = Screen._(
-      mediaQueryData: MediaQuery.of(context),
-      breakpointData:
-          breakpointData ?? Breakpoint.of(context) ?? const BreakpointData(),
-    );
+    Screen screen = Screen.fromContext(context);
 
     AdaptiveWidgetBuilder? b;
 
@@ -507,10 +498,7 @@ class PlatformBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Screen screen = Screen._(
-      mediaQueryData: MediaQuery.of(context),
-      breakpointData: Breakpoint.of(context) ?? const BreakpointData(),
-    );
+    Screen screen = Screen.fromContext(context);
 
     AdaptiveWidgetBuilder? b;
 
@@ -558,10 +546,7 @@ class AdaptiveDesign extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Screen screen = Screen._(
-      mediaQueryData: MediaQuery.of(context),
-      breakpointData: Breakpoint.of(context) ?? const BreakpointData(),
-    );
+    Screen screen = Screen.fromContext(context);
 
     AdaptiveWidgetBuilder? b;
 
