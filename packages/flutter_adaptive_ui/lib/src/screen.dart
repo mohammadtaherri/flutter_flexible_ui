@@ -1,6 +1,6 @@
 part of flutter_adaptive_ui;
 
-/// An object that gives some informations about device's screen.
+/// An object that gives some information about device's screen.
 ///
 /// See also:
 ///
@@ -46,7 +46,7 @@ class Screen {
   /// If screen width is 1440-1919 px, it will be large.
   /// If screen width is 1920+ px, it will be xLarge.
   ///
-  /// You can overrid the default sizes by wrpping your [MaterialApp]
+  /// You can override the default sizes by wrapping your [MaterialApp]
   /// (or [WidgetsApp]) in a [Breakpoint].
   ///
   /// See also:
@@ -67,7 +67,7 @@ class Screen {
   /// If the screen width is 1440-1919 px, it will be mediumDesktop.
   /// If the screen width is 1920+ px, it will be largeDesktop.
   ///
-  /// You can overrid the default sizes by wrpping your [MaterialApp]
+  /// You can override the default sizes by wrapping your [MaterialApp]
   /// (or [WidgetsApp]) in a [Breakpoint].
   ///
   /// See also:

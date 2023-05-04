@@ -53,12 +53,12 @@ class BreakpointData {
   /// The minimum width of the Large Desktop
   final double minLargeDesktopWidth;
 
-  ScreenSize _getScreenSize(double widht) {
+  ScreenSize _getScreenSize(double width) {
     debugAssertIsValid();
-    if (widht >= minXLargeScreenWidth) return ScreenSize.xlarge;
-    if (widht >= minLargeScreenWidth) return ScreenSize.large;
-    if (widht >= minMediumScreenWidth) return ScreenSize.medium;
-    if (widht >= minSmallScreenWidth) return ScreenSize.small;
+    if (width >= minXLargeScreenWidth) return ScreenSize.xlarge;
+    if (width >= minLargeScreenWidth) return ScreenSize.large;
+    if (width >= minMediumScreenWidth) return ScreenSize.medium;
+    if (width >= minSmallScreenWidth) return ScreenSize.small;
     return ScreenSize.xsmall;
   }
 
@@ -97,8 +97,7 @@ class BreakpointData {
         minSmallTabletWidth: minSmallTabletWidth ?? this.minSmallTabletWidth,
         minLargeTabletWidth: minLargeTabletWidth ?? this.minLargeTabletWidth,
         minSmallDesktopWidth: minSmallDesktopWidth ?? this.minSmallDesktopWidth,
-        minMediumDesktopWidth:
-            minMediumDesktopWidth ?? this.minMediumDesktopWidth,
+        minMediumDesktopWidth: minMediumDesktopWidth ?? this.minMediumDesktopWidth,
         minLargeDesktopWidth: minLargeDesktopWidth ?? this.minLargeDesktopWidth,
       );
 
@@ -266,8 +265,6 @@ class Breakpoint extends InheritedWidget {
   /// The [breakPointData] from the closest [Breakpoint] instance that encloses the given
   /// context.
   static BreakpointData? of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<Breakpoint>()
-        ?.breakpointData;
+    return context.dependOnInheritedWidgetOfExactType<Breakpoint>()?.breakpointData;
   }
 }
